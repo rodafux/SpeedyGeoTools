@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedyGeoTools - Créateur de logbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="logbook.html" class="active">Créateur de logbook</a>
+    </nav>
+
+    <div class="container no-print">
+        <h1>Créateur de logbook (PDF)</h1>
+        <p class="subtitle">Configurez vos paramètres et cliquez sur imprimer (choisissez "Enregistrer au format PDF" dans la destination).</p>
+
+        <div class="controls-panel">
+
+            <div class="form-group checkbox-group emergency-toggle">
+                <input type="checkbox" id="isEmergency">
+                <label for="isEmergency" style="color: #d32f2f; font-weight: bold;">Ceci est un logbook de secours</label>
+            </div>
+
+            <div class="form-group" id="emergencyPseudoGroup" style="display: none;">
+                <label for="emergencyPseudo">Votre pseudo (Déposé par) :</label>
+                <input type="text" id="emergencyPseudo" placeholder="Ex: GeoTrouveTout">
+            </div>
+
+            <div id="standardOptions">
+                <div class="form-group">
+                    <label for="cacheName">Nom de la cache (optionnel) :</label>
+                    <input type="text" id="cacheName" placeholder="Ex: La cache du moulin">
+                </div>
+
+                <div class="form-group">
+                    <label for="cacheCode">Code de la cache (optionnel) :</label>
+                    <input type="text" id="cacheCode" placeholder="Ex: GC12345">
+                </div>
+
+                <div class="form-group">
+                    <label for="logoInput">Logo personnalisé (optionnel) :</label>
+                    <input type="file" id="logoInput" accept="image/png, image/jpeg">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="hasQrCode">
+                    <label for="hasQrCode">Ajouter un QR Code (Lien du créateur)</label>
+                </div>
+
+                <div class="form-group" id="qrUrlGroup" style="display: none;">
+                    <label for="qrUrl">Lien du QR Code :</label>
+                    <input type="text" id="qrUrl" placeholder="https://...">
+                </div>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="hasWarning">
+                <label for="hasWarning">Imprimer l'avertissement Geocaching sur la première bande</label>
+            </div>
+
+            <div id="podiumOptions">
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="hasFtf">
+                    <label for="hasFtf">Imprimer la zone FTF</label>
+                </div>
+
+                <div class="form-group checkbox-group sub-checkbox" id="ftfTamponGroup" style="display: none;">
+                    <input type="checkbox" id="hasFtfTampon" checked>
+                    <label for="hasFtfTampon">Agrandir la zone FTF (Espace Tampon)</label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="hasStfTtf">
+                    <label for="hasStfTtf">Imprimer les zones STF et TTF</label>
+                </div>
+
+                <div class="form-group checkbox-group sub-checkbox" id="stfTtfTamponGroup" style="display: none;">
+                    <input type="checkbox" id="hasStfTtfTampon" checked>
+                    <label for="hasStfTtfTampon">Agrandir les zones STF/TTF (Espace Tampon)</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="stripCount">Nombre total de bandes (5 par page max) :</label>
+                <input type="number" id="stripCount" value="5" min="1" max="100">
+            </div>
+
+            <button onclick="generateAndPrint()">Générer le PDF / Imprimer</button>
+        </div>
+    </div>
+
+    <div id="render-area"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

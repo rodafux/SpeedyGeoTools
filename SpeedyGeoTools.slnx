@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path="LICENSE.txt" />
+  </Folder>
+  <Project Path="SpeedyGeoTools/SpeedyGeoTools.csproj" />
+</Solution>
