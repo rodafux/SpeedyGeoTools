@@ -1,5 +1,7 @@
 let currentLogoBase64 = null;
 
+document.addEventListener('DOMContentLoaded', renderHistory);
+
 if (document.getElementById('logoInput')) {
     document.getElementById('logoInput').addEventListener('change', function (e) {
         const file = e.target.files[0];
@@ -34,6 +36,126 @@ document.getElementById('hasStfTtf').addEventListener('change', function (e) {
     document.getElementById('stfTtfTamponGroup').style.display = e.target.checked ? 'flex' : 'none';
 });
 
+const stripWidthSelect = document.getElementById('stripWidth');
+if (stripWidthSelect) {
+    stripWidthSelect.addEventListener('change', function (e) {
+        const is25mm = e.target.value === '25';
+        const ftfTampon = document.getElementById('hasFtfTampon');
+        const stfTtfTampon = document.getElementById('hasStfTtfTampon');
+        if (ftfTampon) ftfTampon.disabled = is25mm;
+        if (stfTtfTampon) stfTtfTampon.disabled = is25mm;
+    });
+}
+
+function saveToHistory(config) {
+    let history = JSON.parse(localStorage.getItem('sgt_logbook_history')) || [];
+
+    const newEntry = {
+        id: Date.now(),
+        dateStr: new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+        ...config
+    };
+
+    history.unshift(newEntry);
+
+    if (history.length > 10) {
+        history = history.slice(0, 10);
+    }
+
+    localStorage.setItem('sgt_logbook_history', JSON.stringify(history));
+    renderHistory();
+}
+
+function renderHistory() {
+    const history = JSON.parse(localStorage.getItem('sgt_logbook_history')) || [];
+    const listDiv = document.getElementById('historyList');
+    const emptyText = document.getElementById('historyEmpty');
+    const clearBtn = document.getElementById('clearHistoryBtn');
+
+    listDiv.innerHTML = '';
+
+    if (history.length === 0) {
+        emptyText.style.display = 'block';
+        clearBtn.style.display = 'none';
+    } else {
+        emptyText.style.display = 'none';
+        clearBtn.style.display = 'block';
+
+        history.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'history-item';
+            div.onclick = () => loadFromHistory(index);
+
+            const title = item.cacheName || item.cacheCode || `Logbook ${item.stripWidth}mm`;
+
+            div.innerHTML = `
+                <div class="history-item-title">${title}</div>
+                <div class="history-item-date">${item.dateStr}</div>
+            `;
+            listDiv.appendChild(div);
+        });
+    }
+}
+
+function showLogoWarning() {
+    const toast = document.getElementById('toastNotification');
+    if (toast) {
+        toast.classList.remove('hidden');
+        setTimeout(() => {
+            toast.classList.add('hidden');
+        }, 6000);
+    }
+}
+
+function loadFromHistory(index) {
+    const history = JSON.parse(localStorage.getItem('sgt_logbook_history')) || [];
+    const item = history[index];
+    if (!item) return;
+
+    const isEmergencyCb = document.getElementById('isEmergency');
+    isEmergencyCb.checked = false;
+    isEmergencyCb.dispatchEvent(new Event('change'));
+
+    document.getElementById('cacheName').value = item.cacheName || '';
+    document.getElementById('cacheCode').value = item.cacheCode || '';
+
+    document.getElementById('logoInput').value = '';
+    currentLogoBase64 = null;
+
+    const hasQrCodeCb = document.getElementById('hasQrCode');
+    hasQrCodeCb.checked = item.hasQrCode || false;
+    document.getElementById('qrUrl').value = item.qrUrl || '';
+    hasQrCodeCb.dispatchEvent(new Event('change'));
+
+    document.getElementById('hasWarning').checked = item.hasWarning || false;
+
+    const widthSel = document.getElementById('stripWidth');
+    widthSel.value = item.stripWidth || '35';
+    widthSel.dispatchEvent(new Event('change'));
+
+    document.getElementById('stripCount').value = item.stripCount || '5';
+
+    const hasFtfCb = document.getElementById('hasFtf');
+    hasFtfCb.checked = item.hasFtf || false;
+    document.getElementById('hasFtfTampon').checked = item.hasFtfTampon || false;
+    hasFtfCb.dispatchEvent(new Event('change'));
+
+    const hasStfTtfCb = document.getElementById('hasStfTtf');
+    hasStfTtfCb.checked = item.hasStfTtf || false;
+    document.getElementById('hasStfTtfTampon').checked = item.hasStfTtfTampon || false;
+    hasStfTtfCb.dispatchEvent(new Event('change'));
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showLogoWarning();
+}
+
+function clearHistory() {
+    if (confirm("Voulez-vous vraiment effacer votre historique de création ?")) {
+        localStorage.removeItem('sgt_logbook_history');
+        renderHistory();
+    }
+}
+
 function generateAndPrint() {
     const isEmergency = document.getElementById('isEmergency').checked;
     const emergencyPseudo = document.getElementById('emergencyPseudo').value.trim();
@@ -45,12 +167,32 @@ function generateAndPrint() {
     const hasQrCode = document.getElementById('hasQrCode').checked;
     const qrUrl = document.getElementById('qrUrl').value.trim();
 
+    const stripWidth = parseInt(document.getElementById('stripWidth').value) || 35;
+    const is25mm = (stripWidth === 25);
+
     const hasFtf = isEmergency ? false : document.getElementById('hasFtf').checked;
-    const hasFtfTampon = isEmergency ? false : document.getElementById('hasFtfTampon').checked;
+    const hasFtfTampon = isEmergency || is25mm ? false : document.getElementById('hasFtfTampon').checked;
+
     const hasStfTtf = isEmergency ? false : document.getElementById('hasStfTtf').checked;
-    const hasStfTtfTampon = isEmergency ? false : document.getElementById('hasStfTtfTampon').checked;
+    const hasStfTtfTampon = isEmergency || is25mm ? false : document.getElementById('hasStfTtfTampon').checked;
 
     const totalStrips = parseInt(document.getElementById('stripCount').value) || 5;
+
+    if (!isEmergency) {
+        saveToHistory({
+            cacheName,
+            cacheCode,
+            hasWarning,
+            hasQrCode,
+            qrUrl,
+            stripWidth,
+            stripCount: totalStrips,
+            hasFtf,
+            hasFtfTampon,
+            hasStfTtf,
+            hasStfTtfTampon
+        });
+    }
 
     const renderArea = document.getElementById('render-area');
     renderArea.innerHTML = '';
@@ -68,10 +210,13 @@ function generateAndPrint() {
         Plus d'informations sur le site web officiel.
     `;
 
-    const stripsPerPage = 5;
+    const stripsPerPage = Math.floor(180 / stripWidth);
     const totalPages = Math.ceil(totalStrips / stripsPerPage);
     let stripCounter = 0;
     let podiumPrinted = false;
+
+    const dateText = is25mm ? '' : 'Date : ........';
+    const pseudoText = is25mm ? '' : 'Pseudo : ................';
 
     for (let p = 0; p < totalPages; p++) {
         const page = document.createElement('div');
@@ -82,6 +227,7 @@ function generateAndPrint() {
 
             const strip = document.createElement('div');
             strip.className = 'log-strip';
+            strip.style.width = `${stripWidth}mm`;
 
             const stapleArea = document.createElement('div');
             stapleArea.className = 'staple-area';
@@ -196,8 +342,8 @@ function generateAndPrint() {
                         ftfLine.innerHTML = `
                             <div class="podium-header">
                                 <span class="podium-title">FTF</span>
-                                <span class="podium-input-date">Date : ........</span>
-                                <span class="podium-input-pseudo">Pseudo : ................</span>
+                                <span class="podium-input-date">${dateText}</span>
+                                <span class="podium-input-pseudo">${pseudoText}</span>
                             </div>
                             ${tamponHtml}
                         `;
@@ -212,8 +358,8 @@ function generateAndPrint() {
                         stfLine.innerHTML = `
                             <div class="podium-header">
                                 <span class="podium-title">STF</span>
-                                <span class="podium-input-date">Date : ........</span>
-                                <span class="podium-input-pseudo">Pseudo : ................</span>
+                                <span class="podium-input-date">${dateText}</span>
+                                <span class="podium-input-pseudo">${pseudoText}</span>
                             </div>
                             ${tamponHtml}
                         `;
@@ -224,8 +370,8 @@ function generateAndPrint() {
                         ttfLine.innerHTML = `
                             <div class="podium-header">
                                 <span class="podium-title">TTF</span>
-                                <span class="podium-input-date">Date : ........</span>
-                                <span class="podium-input-pseudo">Pseudo : ................</span>
+                                <span class="podium-input-date">${dateText}</span>
+                                <span class="podium-input-pseudo">${pseudoText}</span>
                             </div>
                             ${tamponHtml}
                         `;
@@ -248,7 +394,11 @@ function generateAndPrint() {
                 for (let r = 0; r < rowCount; r++) {
                     const row = document.createElement('div');
                     row.className = 'log-row';
-                    row.innerHTML = '<div class="log-date">Date</div><div class="log-name">Pseudo</div>';
+                    if (is25mm) {
+                        row.innerHTML = '<div class="log-date"></div><div class="log-name"></div>';
+                    } else {
+                        row.innerHTML = '<div class="log-date">Date</div><div class="log-name">Pseudo</div>';
+                    }
                     logsContainer.appendChild(row);
                 }
                 strip.appendChild(logsContainer);
