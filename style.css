@@ -41,13 +41,71 @@ body {
     justify-content: center;
     text-decoration: none;
     border-bottom: 1px solid var(--border-color);
+    overflow: hidden; /* Empêche le logo de déborder s'il est zoomé */
 }
 
 .brand-logo {
     width: 100%;
-    max-width: 180px;
+    max-width: 200px;
     height: auto;
     object-fit: contain;
+    transform: scale(1.4); /* Zoom artificiel pour compenser les marges transparentes de l'image */
+    margin: 10px 0;
+}
+
+/* WIDGET GOOGLE TRADUCTION - Style natif et élégant */
+.translation-widget {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+.goog-te-gadget {
+    color: transparent !important; /* Cache le texte 'Powered by' */
+    font-size: 0px;
+}
+.goog-logo-link {
+    display: none !important; /* Cache l'image Google */
+}
+.goog-te-combo {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: #f9fafb;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.goog-te-combo:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+/* --- ÉRADICATION DE LA BARRE GOOGLE ET DES INFOBULLES --- */
+/* Masque la barre supérieure (toutes les versions) */
+.skiptranslate iframe,
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+/* Annule le décalage de la page forcé par Google */
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+/* Masque les info-bulles au survol (anciennes et nouvelles classes) */
+#goog-gt-tt, 
+.goog-te-balloon-frame, 
+div[id^="goog-gt-"] {
+    display: none !important;
+}
+
+/* Supprime le surlignage jaune très moche sur le texte */
+.goog-text-highlight {
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 .sidebar-nav {
@@ -485,14 +543,18 @@ button {
         display: block;
     }
 
-    .no-print, .app-sidebar, .container, .site-footer {
+    /* --- SOLUTION RADICALE PAGE BLANCHE DÉBUT --- */
+    /* 1. On cache absolument tous les éléments de la page */
+    body > * {
         display: none !important;
     }
 
-    #render-area {
-        display: block;
+    /* 2. On affiche UNIQUEMENT la zone qui contient les logbooks générés */
+    body > #render-area {
+        display: block !important;
         width: 100%;
     }
+    /* -------------------------------------------- */
 
     .a4-page {
         width: 210mm;
@@ -501,7 +563,13 @@ button {
         box-sizing: border-box;
         display: flex;
         justify-content: center;
-        page-break-after: always;
+        break-after: page; 
+    }
+
+    /* Annule le saut de page pour la toute dernière feuille (Page blanche fin) */
+    .a4-page:last-child {
+        page-break-after: auto;
+        break-after: auto;
     }
 
     .log-strip {

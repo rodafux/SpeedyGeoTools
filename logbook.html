@@ -16,6 +16,9 @@
         <a href="index.html" class="sidebar-brand">
             <img src="logo.png" alt="SpeedyGeoTools" class="brand-logo">
         </a>
+
+        <div id="google_translate_element" class="translation-widget"></div>
+
         <div class="sidebar-nav">
             <a href="index.html">Accueil</a>
             <a href="logbook.html" class="active">Créateur de logbook</a>
@@ -136,5 +139,36 @@
     <div id="render-area"></div>
 
     <script src="script.js"></script>
+    <script type="text/javascript">
+            (function() {
+                // Récupère la vraie langue du navigateur
+                var userLang = navigator.language || navigator.userLanguage;
+                userLang = userLang.substring(0, 2).toLowerCase(); 
+                
+                // (Optionnel) Affiche la langue dans la console F12 pour que vous puissiez vérifier
+                console.log("SpeedyGeoTools - Langue JS détectée :", userLang);
+
+                // Vérifie s'il y a déjà un cookie de traduction
+                var cookieExists = document.cookie.indexOf('googtrans=') !== -1;
+
+                // Si le navigateur n'est pas FR et qu'il n'y a pas encore de cookie
+                if (userLang !== 'fr' && !cookieExists) {
+                    // On crée le cookie autoritaire
+                    document.cookie = 'googtrans=/fr/' + userLang + '; path=/';
+                    document.cookie = 'googtrans=/fr/' + userLang + '; domain=.' + window.location.hostname + '; path=/';
+                    
+                    // On force le rafraîchissement UNE SEULE FOIS pour appliquer la langue
+                    window.location.reload();
+                }
+            })();
+
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'fr',
+                    autoDisplay: false
+                }, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
