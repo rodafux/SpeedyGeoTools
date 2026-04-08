@@ -341,6 +341,7 @@ button {
         transform: scale(0.98);
     }
 
+/* FOOTER ET MENTIONS LEGALES */
 .site-footer {
     text-align: center;
     padding: 30px 20px;
@@ -366,6 +367,36 @@ button {
             color: var(--primary-hover);
             text-decoration: underline;
         }
+
+    .site-footer .disclaimer {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: 15px;
+        line-height: 1.4;
+        opacity: 0.8;
+    }
+
+        .site-footer .disclaimer a {
+            color: var(--text-muted);
+            font-weight: normal;
+            text-decoration: underline;
+        }
+
+.legal-content h2 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.legal-content p, .legal-content ul {
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.legal-content ul {
+    padding-left: 20px;
+}
 
 .toast {
     position: fixed;
