@@ -109,7 +109,7 @@ const i18n = {
     pt: {
         warnTitle: "Parabéns, encontraste! (Intencionalmente ou não!)",
         warnIntro: "O que é este recipiente escondido aqui?",
-        warnBody: "Faz parte de um jogo mundial dedicado aos utilizadores de GPS, chamado \"Geocaching\". O jogo consiste em esconder um \"tesouro\" (este recipiente e o seu conteúdo) e publicar as coordenadas exatas na Internet para que outros jogadores possam procurá-lo. A única regra é: se tirares algo da geocache, deixa algo de valor igual ou superior, e regista o teu achado no logbook.",
+        warnBody: "Faz parte de um jogo mundial dedicado aos utilizadores de GPS, chamado \"Geocaching\". O jogo consiste em esconder um \"tesouro\" (este recipiente e o seu conteúdo) e publicar as coordenadas exatas na Internet pour que outros jogadores possam procurá-lo. A única regra é: se tirares algo da geocache, deixa algo de valor igual ou superior, e regista o teu achado no logbook.",
         warnAccident: "SE ENCONTRASTE ESTE RECIPIENTE POR ACASO:",
         warnL1: "Ótimo! Por favor, não o movas nem o vandalizes.",
         warnL2: "Se quiseres, podes levar alguma coisa. Mas por favor deixa algo teu para os outros encontrarem.",
@@ -130,12 +130,12 @@ const i18n = {
     nl: {
         warnTitle: "Gefeliciteerd, je hebt hem gevonden! (Per ongeluk of expres!)",
         warnIntro: "Wat is dit voor een doosje en wat doet het hier?",
-        warnBody: "Het maakt deel uit van een wereldwijd spel voor GPS-gebruikers, genaamd \"Geocaching\". Het spel bestaat uit het verstoppen van een \"schat\" (dit doosje en de inhoud), en het publiceren van de exacte coördinaten op het internet zodat andere spelers ernaar kunnen zoeken. De enige regel is: als je iets uit de geocache haalt, laat dan iets van gelijke of grotere waarde achter, en schrijf over je vondst in het logboek.",
+        warnBody: "Het maakt deel uit van een wereldwijd spel voor GPS-gebruikers, genaamd \"Geocaching\". Het spel bestaat uit het verstoppen van een \"schat\" (dit doosje en de inhoud), en het publiceren van de exacte coördinaten op het internet zodat andere spelersernaar kunnen zoeken. De enige regel is: als je iets uit de geocache haalt, laat dan iets van gelijke of grotere waarde achter, en schrijf over je vondst in het logboek.",
         warnAccident: "ALS JE DIT DOOSJE PER ONGELUK HEBT GEVONDEN:",
         warnL1: "Geweldig! Verplaats of verniel het alsjeblieft niet.",
         warnL2: "Als je wilt, ga je gang en neem iets. Maar laat alsjeblieft iets van jezelf achter voor anderen.",
         warnL3: "Vergeet niet het logboek te tekenen!",
-        warnOutro: "Meer informatie op de officiële website.",
+        warnOutro: "Meer informatie op de officielle website.",
         date: "Datum",
         pseudo: "Naam",
         dateEmpty: "Datum: ........",
@@ -456,6 +456,7 @@ function generateAndPrint() {
                         strip.appendChild(logoContainer);
                     }
 
+                    // Bandeau noir SpeedyGeoTools
                     const createdBox = document.createElement('div');
                     createdBox.className = 'created-on';
                     createdBox.innerText = t.createdOn;

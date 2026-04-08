@@ -92,8 +92,8 @@ body {
     justify-content: center;
     gap: 10px;
     background-color: #5865F2;
-    color: white;
-    text-decoration: none;
+    color: white !important;
+    text-decoration: none !important;
     padding: 12px 15px;
     border-radius: 8px;
     font-weight: 600;
@@ -102,21 +102,6 @@ body {
 }
 .sidebar-discord a:hover {
     background-color: #4752C4;
-}
-.sidebar-discord a:active {
-    transform: scale(0.98);
-}
-.sidebar-discord a.disabled {
-    background-color: #99aab5;
-    cursor: not-allowed;
-    color: #ffffff;
-}
-.sidebar-discord a.disabled:hover {
-    background-color: #99aab5;
-    transform: none;
-}
-.sidebar-discord a.disabled:active {
-    transform: none;
 }
 
 .skiptranslate iframe,
@@ -190,7 +175,6 @@ div[id^="goog-gt-"] {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -211,6 +195,21 @@ p.subtitle {
     color: var(--text-muted);
     margin-bottom: 30px;
     margin-top: 0;
+}
+
+.welcome-message {
+    background-color: rgba(46, 125, 50, 0.05);
+    border-left: 4px solid var(--primary-color);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.welcome-message p {
+    margin: 0;
 }
 
 .home-grid {
@@ -305,7 +304,6 @@ p.subtitle {
     font-weight: 500;
 }
 
-/* Style pour le widget Discord */
 .widget-container {
     margin-top: 40px;
     background-color: var(--bg-surface);
@@ -628,6 +626,10 @@ button {
         box-sizing: border-box;
     }
 
+    .stats-card {
+        display: none !important;
+    }
+
     .toast {
         bottom: 20px;
         right: 20px;
@@ -726,17 +728,18 @@ button {
     }
 
     .created-on {
-            text-align: center;
-            font-size: 7px;
-            font-weight: bold;
-            background-color: #000 !important;
-            color: #FFF !important;
-            padding: 4px 1mm;
-            border-bottom: 1px solid #000;
-            text-transform: uppercase;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
+        text-align: center;
+        font-size: 9px;
+        font-weight: bold;
+        background-color: #000 !important;
+        color: #FFF !important;
+        padding: 4px 1mm;
+        border-bottom: 1px solid #000;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
     .cache-info {
         text-align: center;
