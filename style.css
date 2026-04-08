@@ -305,6 +305,41 @@ p.subtitle {
     font-weight: 500;
 }
 
+/* Style pour le widget Discord */
+.widget-container {
+    margin-top: 40px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.widget-container h2 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.widget-container p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.iframe-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-wrapper iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+}
+
 .main-layout {
     display: flex;
     gap: 30px;
