@@ -4,9 +4,7 @@ window.LabelFormats.regular = {
         let qrImgHtml = '';
         if (cache.hasQr && cache.qrUrl) {
             const tempCanvas = document.createElement('canvas');
-            // AJOUT DE LA REDIRECTION ICI
-            const finalQrUrl = "https://speedygeotools.com/redirection.html?url=" + encodeURIComponent(cache.qrUrl);
-            new QRious({ element: tempCanvas, value: finalQrUrl, size: 250 });
+            new QRious({ element: tempCanvas, value: cache.qrUrl, size: 250 });
             qrImgHtml = `<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width: 22mm; flex-shrink: 0;"><img src="${tempCanvas.toDataURL()}" style="max-width: 100%; height: 18mm; object-fit: contain; display: block;"><div style="font-size: 5.5pt; color: #555; margin-top: 0.5mm; text-align: center; line-height: 1; width: 100%;">${t.labelQrWarn}</div></div>`;
         }
 

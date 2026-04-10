@@ -140,13 +140,6 @@ function updateLabelPreview() {
 }
 
 function exportConfig() {
-    // Demander le nom du fichier à l'utilisateur
-    let defaultName = `speedygeotools_etiquettes_${new Date().toISOString().slice(0, 10)}`;
-    let fileName = prompt("Sous quel nom voulez-vous enregistrer cette configuration ?", defaultName);
-    
-    if (!fileName) return; // L'utilisateur a annulé
-    if (!fileName.endsWith(".json")) fileName += ".json";
-
     const config = {
         version: "1.1",
         global: {
@@ -160,7 +153,7 @@ function exportConfig() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config));
     const a = document.createElement('a');
     a.href = dataStr;
-    a.download = fileName;
+    a.download = `speedygeotools_etiquettes_${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(a);
     a.click();
     a.remove();

@@ -82,7 +82,7 @@ function exportLogbookConfig() {
         stripWidth: document.getElementById('stripWidth') ? document.getElementById('stripWidth').value : '35',
         stripCount: document.getElementById('stripCount') ? document.getElementById('stripCount').value : '5',
         pdfLanguage: document.getElementById('pdfLanguage') ? document.getElementById('pdfLanguage').value : 'fr',
-        logoBase64: currentLogoBase64
+        logoBase64: currentLogoBase64 // Sauvegarde du logo personnalisé
     };
 
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config));
@@ -138,7 +138,7 @@ function importLogbookConfig(event) {
             if(config.stripCount && document.getElementById('stripCount')) document.getElementById('stripCount').value = config.stripCount;
             if(config.pdfLanguage && document.getElementById('pdfLanguage')) document.getElementById('pdfLanguage').value = config.pdfLanguage;
 
-            document.getElementById('logoInput').value = '';
+            document.getElementById('logoInput').value = ''; // Réinitialiser le champ fichier visuel (sécurité navigateur)
             
             if (config.logoBase64) {
                 currentLogoBase64 = config.logoBase64;
@@ -273,9 +273,7 @@ function generateAndPrint() {
                         qrTitle.innerText = t.qrTitle || "Lien";
 
                         const qrCanvas = document.createElement('canvas');
-                        // AJOUT DE LA REDIRECTION ICI
-                        const finalQrUrl = "https://speedygeotools.com/redirection.html?url=" + encodeURIComponent(qrUrl);
-                        new QRious({ element: qrCanvas, value: finalQrUrl, size: 70 });
+                        new QRious({ element: qrCanvas, value: qrUrl, size: 70 });
 
                         const qrWarn = document.createElement('div');
                         qrWarn.className = 'qr-warn';

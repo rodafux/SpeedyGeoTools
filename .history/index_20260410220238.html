@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales - SpeedyGeoTools</title>
+    <title>SpeedyGeoTools - Accueil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,37 +24,47 @@
             </a>
         </div>
         <div class="sidebar-nav">
-            <a href="index.html">Accueil</a>
             <details open>
-                <summary>Création de cache</summary>
+                <summary>Générateurs</summary>
+                <a href="index.html" class="active">Accueil</a>
                 <a href="etiquettes.html">Créateur d'étiquettes</a>
                 <a href="logbook.html">Créateur de logbook</a>
             </details>
         </div>
     </div>
     <div class="app-content">
-        <div class="container legal-content">
-            <h1>Mentions Légales & Politique de Confidentialité</h1>
-            <h2>1. Éditeur du site</h2>
-            <p>Ce site web est édité à titre personnel par Julien Porcher (alias RodaLeRenard sur geocaching.com). Il s'agit d'un projet open-source et gratuit mis à la disposition de la communauté des joueurs de Geocaching.</p>
-            <p>Code source disponible sous licence MIT sur GitHub.</p>
-            <h2>2. Hébergement</h2>
-            <p>Le site est hébergé par <strong>GitHub Pages</strong>, un service fourni par :</p>
-            <p>GitHub, Inc.<br>88 Colin P Kelly Jr St<br>San Francisco, CA 94107<br>États-Unis</p>
-            <h2>3. Propriété Intellectuelle et Marques</h2>
-            <p>Le terme "Geocaching", ainsi que le logo aux quatre carrés, sont des marques déposées de Groundspeak, Inc. et sont utilisés avec permission. SpeedyGeoTools est un outil tiers et n'est en aucun cas affilié, approuvé, associé ou sponsorisé par Groundspeak, Inc.</p>
-            <h2>4. Données Personnelles (RGPD) et Cookies</h2>
-            <p><strong>SpeedyGeoTools respecte votre vie privée :</strong></p>
-            <ul>
-                <li><strong>Aucun cookie de pistage :</strong> Ce site n'utilise aucun cookie traceur, outil d'analyse d'audience (Google Analytics, etc.) ou pixel publicitaire.</li>
-                <li><strong>Stockage local :</strong> Les paramètres de vos logbooks sont sauvegardés de manière transparente via la technologie "localStorage" de votre navigateur web. Ces données restent strictement sur votre appareil et ne sont jamais envoyées ni traitées sur un serveur distant.</li>
-                <li><strong>Génération de PDF :</strong> La mise en page pour l'impression est générée intégralement sur votre propre ordinateur ou téléphone.</li>
-            </ul>
+        <div class="container">
+            <h1>Bienvenue sur SpeedyGeoTools</h1>
+            <p class="subtitle">La boîte à outils rapide et pratique du géocacheur.</p>
+            <div class="welcome-message">
+                <p>🌱 <strong>SpeedyGeoTools n'est qu'à ses débuts !</strong> D'autres outils arriveront prochainement pour faciliter vos aventures. N'hésitez pas à rejoindre notre communauté sur Discord pour partager vos idées et nous aider à faire grandir le projet ensemble.</p>
+            </div>
+            <div class="home-grid">
+                <a href="etiquettes.html" style="text-decoration: none; color: inherit;">
+                    <div class="tool-card">
+                        <h2>Créateur d'étiquettes</h2>
+                        <p>Générez et imprimez vos étiquettes avec QR Code et options personnalisées.</p>
+                    </div>
+                </a>
+                <a href="logbook.html" style="text-decoration: none; color: inherit;">
+                    <div class="tool-card">
+                        <h2>Créateur de logbook</h2>
+                        <p>Générez et imprimez instantanément des feuilles de log adaptées à la taille de vos géocaches (Micro, Small, Regular).</p>
+                    </div>
+                </a>
+            </div>
+            <div class="widget-container">
+                <h2>Rejoignez la communauté Discord</h2>
+                <p>Venez discuter géocaching, proposer vos idées ou obtenir de l'aide pour vos créations !</p>
+                <div class="iframe-wrapper">
+                    <iframe src="https://discord.com/widget?id=1491451481055039500&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+            </div>
         </div>
         <footer class="site-footer no-print">
             <p>SpeedyGeoTools vous est utile ? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Faites un don via PayPal</a> ❤️</p>
             <p class="disclaimer">
-                SpeedyGeoTools est un outil tiers créé par un joueur. Le logo Geocaching est une marque déposée de Groundspeak, Inc. utilisée avec permission.<br>
+                SpeedyGeoTools est un outil tiers créé par un joueur. Le logo Geocaching est une marque déposée de Groundspeak, Inc. utilizada con permiso. Ce site n'est ni affilié, ni approuvé, ni sponsorisé par Groundspeak, Inc.<br>
                 <a href="mentions-legales.html">Mentions Légales & Données Personnelles</a>
             </p>
         </footer>

@@ -26,9 +26,9 @@
             </a>
         </div>
         <div class="sidebar-nav">
-            <a href="index.html">Accueil</a>
             <details open>
-                <summary>Création de cache</summary>
+                <summary>Générateurs</summary>
+                <a href="index.html">Accueil</a>
                 <a href="etiquettes.html">Créateur d'étiquettes</a>
                 <a href="logbook.html" class="active">Créateur de logbook</a>
             </details>
@@ -40,10 +40,6 @@
             <p class="subtitle">Configurez vos paramètres et cliquez sur imprimer (choisissez "Enregistrer au format PDF" dans la destination).</p>
             <div class="main-layout" style="display:block;">
                 <div class="controls-panel">
-                    <div style="margin-bottom: 25px;">
-                        <input type="file" id="importLogbook" accept=".json" onchange="importLogbookConfig(event)" style="display: none;">
-                        <button onclick="document.getElementById('importLogbook').click()" class="btn-secondary">📁 Importer une configuration</button>
-                    </div>
                     <div class="form-group checkbox-group emergency-toggle">
                         <input type="checkbox" id="isEmergency">
                         <label for="isEmergency" style="color: #d32f2f; font-weight: bold;">Ceci est un logbook de secours</label>
@@ -121,10 +117,12 @@
                             <option value="cs">Čeština (Tchèque)</option>
                         </select>
                     </div>
-                    <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-                        <button onclick="exportLogbookConfig()" class="btn-secondary" style="margin-bottom: 15px;">💾 Exporter la configuration</button>
-                        <button onclick="generateAndPrint()">🖨️ Générer le PDF / Imprimer</button>
+                    <div class="import-export-section">
+                        <button onclick="exportLogbookConfig()" class="btn-outline">Exporter la configuration</button>
+                        <input type="file" id="importLogbook" accept=".json" onchange="importLogbookConfig(event)" style="display: none;">
+                        <button onclick="document.getElementById('importLogbook').click()" class="btn-outline">Importer une configuration</button>
                     </div>
+                    <button onclick="generateAndPrint()" style="margin-top: 20px;">Générer le PDF / Imprimer</button>
                 </div>
             </div>
         </div>

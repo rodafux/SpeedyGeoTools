@@ -4,9 +4,7 @@ window.LabelFormats.small = {
         let qrImgHtml = '';
         if (cache.hasQr && cache.qrUrl) {
             const tempCanvas = document.createElement('canvas');
-            // AJOUT DE LA REDIRECTION ICI
-            const finalQrUrl = "https://speedygeotools.com/redirection.html?url=" + encodeURIComponent(cache.qrUrl);
-            new QRious({ element: tempCanvas, value: finalQrUrl, size: 150 });
+            new QRious({ element: tempCanvas, value: cache.qrUrl, size: 150 });
             qrImgHtml = `
                 <div style="flex: 0 0 11.5mm; display:flex; justify-content:flex-end; align-items:flex-end;">
                     <img src="${tempCanvas.toDataURL()}" style="width: 11.5mm; height: 11.5mm; object-fit: contain;">

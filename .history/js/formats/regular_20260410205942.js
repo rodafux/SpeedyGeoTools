@@ -1,12 +1,11 @@
 window.LabelFormats = window.LabelFormats || {};
 window.LabelFormats.regular = {
     generate: function(cache, t, isPreview, owner, mail) {
+        const fontScale = isPreview ? 1.2 : 1;
         let qrImgHtml = '';
         if (cache.hasQr && cache.qrUrl) {
             const tempCanvas = document.createElement('canvas');
-            // AJOUT DE LA REDIRECTION ICI
-            const finalQrUrl = "https://speedygeotools.com/redirection.html?url=" + encodeURIComponent(cache.qrUrl);
-            new QRious({ element: tempCanvas, value: finalQrUrl, size: 250 });
+            new QRious({ element: tempCanvas, value: cache.qrUrl, size: 250 });
             qrImgHtml = `<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width: 22mm; flex-shrink: 0;"><img src="${tempCanvas.toDataURL()}" style="max-width: 100%; height: 18mm; object-fit: contain; display: block;"><div style="font-size: 5.5pt; color: #555; margin-top: 0.5mm; text-align: center; line-height: 1; width: 100%;">${t.labelQrWarn}</div></div>`;
         }
 
@@ -17,14 +16,12 @@ window.LabelFormats.regular = {
         const ownerHtml = owner ? `<div style="font-size: 8.5pt; color: #333; line-height:1.1;">${t.labelOwnerPrefix}${owner}</div>` : '';
         const mailHtml = mail ? `<div style="font-size: 8.5pt; color: #333; line-height:1.1;">${t.labelMailPrefix}${mail}</div>` : '';
 
-        const borderStyle = isPreview ? 'border: 1px solid #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1);' : 'border: 1px dashed #999;';
-
         return `
-            <div class="print-label" style="width: 120mm; height: 60mm; background: #fff; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; position: relative; ${borderStyle}">
-                <div style="background-color: #2e7d32 !important; color: #fff !important; width: 100%; height: 12mm; text-align: center; flex-shrink: 0; box-sizing:border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; position: relative; display: flex; align-items: center; justify-content: center;">
-                    <img src="Logo_Geocaching_4squares_White.png" style="position: absolute; left: 3mm; height: 9mm; width: auto; object-fit: contain;">
+            <div class="print-label" style="width: ${isPreview ? '100%' : '120mm'}; height: ${isPreview ? 'auto' : '60mm'}; min-height: ${isPreview ? '250px' : '60mm'}; background: #fff; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; position: relative; ${isPreview ? 'border:1px solid #ccc; margin-bottom:10px;' : 'border: 1px dashed #999;'}">
+                <div style="background-color: #2e7d32 !important; color: #fff !important; width: 100%; height: ${isPreview ? '50px' : '12mm'}; text-align: center; flex-shrink: 0; box-sizing:border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; position: relative; display: flex; align-items: center; justify-content: center;">
+                    <img src="Logo_Geocaching_4squares_White.png" style="position: absolute; left: ${isPreview ? '15px' : '3mm'}; height: ${isPreview ? '35px' : '9mm'}; width: auto; object-fit: contain;">
                     <div style="display: flex; flex-direction: column; align-items: center;">
-                        <div style="font-weight: 800; text-transform: uppercase; font-size: 11pt; line-height:1;">${t.labelHeader}</div>
+                        <div style="font-weight: 800; text-transform: uppercase; font-size: ${11*fontScale}pt; line-height:1;">${t.labelHeader}</div>
                         <div style="font-size: 8pt; font-weight: 500; line-height:1; margin-top: 2px;">speedygeotools.com</div>
                     </div>
                 </div>

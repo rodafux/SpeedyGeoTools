@@ -26,9 +26,9 @@
             </a>
         </div>
         <div class="sidebar-nav">
-            <a href="index.html">Accueil</a>
             <details open>
-                <summary>Création de cache</summary>
+                <summary>Générateurs</summary>
+                <a href="index.html">Accueil</a>
                 <a href="etiquettes.html" class="active">Créateur d'étiquettes</a>
                 <a href="logbook.html">Créateur de logbook</a>
             </details>
@@ -40,10 +40,6 @@
             <p class="subtitle">Configurez vos paramètres et cliquez sur imprimer.</p>
             <div class="main-layout" style="display:block;">
                 <div class="controls-panel">
-                    <div style="margin-bottom: 25px;">
-                        <input type="file" id="importEtiquettes" accept=".json" onchange="importConfig(event)" style="display: none;">
-                        <button onclick="document.getElementById('importEtiquettes').click()" class="btn-secondary">📁 Importer une configuration</button>
-                    </div>
                     <div class="form-group">
                         <label for="labelSize">Format de l'étiquette :</label>
                         <select id="labelSize" onchange="onSizeChange()">
@@ -56,13 +52,8 @@
                         <label for="pdfLanguage">Langue du texte :</label>
                         <select id="pdfLanguage" onchange="onSizeChange()">
                             <option value="fr">Français</option>
-                            <option value="en">English (Anglais)</option>
-                            <option value="de">Deutsch (Allemand)</option>
-                            <option value="es">Español (Espagnol)</option>
-                            <option value="it">Italiano (Italien)</option>
-                            <option value="pt">Português (Portugais)</option>
-                            <option value="nl">Nederlands (Néerlandais)</option>
-                            <option value="cs">Čeština (Tchèque)</option>
+                            <option value="en">Anglais</option>
+                            <option value="de">Allemand</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -74,12 +65,14 @@
                         <input type="text" id="labelMail" onkeyup="updateLabelPreview()">
                     </div>
                     <div id="cachesListContainer"></div>
-                    <button onclick="addCacheCard()" style="margin-bottom: 20px;">+ Ajouter une cache</button>
-                    <div id="labelPreviewContainer" style="margin-top: 20px; background: #e2e8f0; padding: 20px; border-radius: 8px;"></div>
-                    <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-                        <button onclick="exportConfig()" class="btn-secondary" style="margin-bottom: 15px;">💾 Exporter la configuration</button>
-                        <button onclick="generateLabelsAndPrint()">🖨️ Générer le PDF / Imprimer</button>
+                    <button onclick="addCacheCard()" class="btn-secondary" style="margin-bottom: 20px;">Ajouter une cache</button>
+                    <div class="import-export-section">
+                        <button onclick="exportConfig()" class="btn-outline">Exporter la configuration</button>
+                        <input type="file" id="importEtiquettes" accept=".json" onchange="importConfig(event)" style="display: none;">
+                        <button onclick="document.getElementById('importEtiquettes').click()" class="btn-outline">Importer une configuration</button>
                     </div>
+                    <div id="labelPreviewContainer" style="margin-top: 20px; background: #e2e8f0; padding: 20px; border-radius: 8px;"></div>
+                    <button onclick="generateLabelsAndPrint()" style="margin-top: 20px;">Générer le PDF / Imprimer</button>
                 </div>
             </div>
         </div>
