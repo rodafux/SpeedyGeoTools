@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedyGeoTools - Étiquettes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <div class="app-sidebar no-print">
+        <a href="index.html" class="sidebar-brand">
+            <img src="logo.png" alt="SpeedyGeoTools" class="brand-logo">
+        </a>
+        <div id="google_translate_element" class="translation-widget"></div>
+        <div class="sidebar-discord">
+            <a href="https://discord.gg/7D9yHJCKaA" target="_blank" title="Rejoindre le Discord">
+                <svg viewBox="0 0 127.14 96.36" width="22" height="22" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.33,46,96.22,53,91.08,65.69,84.69,65.69Z"/></svg>
+            </a>
+        </div>
+        <div class="sidebar-nav">
+            <a href="index.html">Accueil</a>
+            <div class="nav-category">Création de cache</div>
+            <a href="logbook.html">Créateur de logbook</a>
+            <a href="etiquettes.html" class="active">Créateur d'étiquettes</a>
+        </div>
+    </div>
+    <div class="app-content">
+        <div class="container no-print">
+            <h1>Créateur d'étiquettes</h1>
+            <p class="subtitle">Créez des étiquettes à coller sur l'extérieur de vos boîtes (à protéger avec du scotch transparent ou à imprimer sur papier adhésif).</p>
+            <div class="main-layout">
+                <div class="controls-panel">
+                    <h3 class="form-section-title">1. Paramètres communs</h3>
+                    <div class="settings-grid" style="background:#fafafa; padding:15px; border-radius:8px; border:1px solid var(--border-color); margin-bottom:20px;">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="labelSize">Format des étiquettes&nbsp;:</label>
+                            <select id="labelSize" onchange="onSizeChange()">
+                                <option value="micro">Micro (50 x 25 mm)</option>
+                                <option value="small">Petite (80 x 40 mm)</option>
+                                <option value="regular" selected>Normale (120 x 60 mm)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="ownerGroup">
+                            <label for="labelOwner">Pseudo du créateur (optionnel)&nbsp;:</label>
+                            <input type="text" id="labelOwner" placeholder="Ex: GeoTrouveTout" onkeyup="updateLabelPreview()">
+                        </div>
+                        <div class="form-group" id="mailGroup">
+                            <label for="labelMail">Email de contact (optionnel)&nbsp;:</label>
+                            <input type="text" id="labelMail" placeholder="Ex: contact@email.com" onkeyup="updateLabelPreview()">
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="pdfLanguage">Langue des étiquettes&nbsp;:</label>
+                            <select id="pdfLanguage" onchange="updateLabelPreview()">
+                                <option value="fr" selected>Français</option>
+                                <option value="en">English (Anglais)</option>
+                                <option value="de">Deutsch (Allemand)</option>
+                                <option value="es">Español (Espagnol)</option>
+                                <option value="it">Italiano (Italien)</option>
+                                <option value="pt">Português (Portugais)</option>
+                                <option value="nl">Nederlands (Néerlandais)</option>
+                                <option value="cs">Čeština (Tchèque)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 class="form-section-title">2. Caches à imprimer</h3>
+                    <div id="cachesListContainer"></div>
+                    <button class="secondary-btn" style="margin-bottom: 20px; font-weight: bold;" onclick="addCacheCard()">+ Ajouter une autre cache</button>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; padding: 15px; background: #f0f7f0; border-radius: 8px; border: 1.5px dashed var(--primary-color);">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label style="font-size: 0.8rem;">Exporter ma config (.json)</label>
+                            <button class="secondary-btn" onclick="exportConfig()" style="margin-top:5px; padding: 10px;">💾 Sauvegarder</button>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label style="font-size: 0.8rem;">Importer une config</label>
+                            <input type="file" id="importFile" accept=".json" onchange="importConfig(event)" style="display:none;">
+                            <button class="secondary-btn" onclick="document.getElementById('importFile').click()" style="margin-top:5px; padding: 10px;">📂 Charger</button>
+                        </div>
+                    </div>
+
+                    <button onclick="generateLabelsAndPrint()">Générer la planche PDF / Imprimer</button>
+                </div>
+                <div class="right-panels">
+                    <div class="preview-panel">
+                        <h2>Aperçus</h2>
+                        <div id="labelPreviewContainer" style="display:flex; flex-direction:column; gap:15px; width:100%;"></div>
+                    </div>
+                    <div class="history-panel">
+                        <h2>Historique</h2>
+                        <p class="history-empty" id="historyEmpty">Aucune étiquette récente.</p>
+                        <div id="historyListLabels" class="history-list"></div>
+                        <button id="clearHistoryBtnLabels" class="secondary-btn" style="display:none;" onclick="clearHistoryLabels()">Tout effacer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="site-footer no-print">
+            <p>SpeedyGeoTools vous est utile ? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Faites un don via PayPal</a> ❤️</p>
+            <p class="disclaimer">
+                SpeedyGeoTools est un outil tiers créé par un joueur. Le logo Geocaching est une marque déposée de Groundspeak, Inc. utilisée avec permission.<br>
+                <a href="mentions-legales.html">Mentions Légales & Données Personnelles</a>
+            </p>
+        </footer>
+    </div>
+    <div id="toastNotification" class="toast hidden no-print">
+        ⚠️ <strong>Attention :</strong> Si vous aviez des logos personnalisés, veuillez les sélectionner à nouveau.
+    </div>
+    <div id="render-area"></div>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/formats/micro.js"></script>
+    <script src="js/formats/small.js"></script>
+    <script src="js/formats/regular.js"></script>
+    <script src="js/etiquettes.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
