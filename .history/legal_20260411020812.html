@@ -3,29 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="SpeedyGeoTools - Home">
-    <meta property="og:description" content="The fast and practical toolkit for geocachers. Instantly generate custom labels and logbooks.">
-    <meta property="og:image" content="https://speedygeotools.com/logo.png">
-    <meta property="og:url" content="https://speedygeotools.com/">
-    <meta property="og:type" content="website">
-    <title>SpeedyGeoTools - Home</title>
-    <meta name="description" content="The fast and practical toolkit for geocachers. Instantly generate custom labels and logbooks.">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="alternate" hreflang="en" href="https://speedygeotools.com/" />
-    <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/" />
-    <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/" />
+    <title>Legal Notice - SpeedyGeoTools</title>
+    <meta name="description" content="Legal notice and privacy policy of SpeedyGeoTools.">
+    <link rel="alternate" hreflang="en" href="https://speedygeotools.com/legal.html" />
+    <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/legal.html" />
+    <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/legal.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="canonical" href="https://speedygeotools.com/" />
     <script>
         (function() {
             var supportedLangs = ['fr'];
             var userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
             if (!sessionStorage.getItem('lang_redirect') && supportedLangs.indexOf(userLang) !== -1) {
                 sessionStorage.setItem('lang_redirect', 'true');
-                window.location.replace(userLang + '/index.html');
+                window.location.replace(userLang + '/legal.html' + window.location.search);
             }
         })();
     </script>
@@ -49,7 +42,7 @@
                 </a>
             </div>
             <div class="sidebar-nav">
-                <a href="index.html" class="active">Home</a>
+                <a href="index.html">Home</a>
                 <details open>
                     <summary>Cache Creation</summary>
                     <a href="labels.html">Label Creator</a>
@@ -59,38 +52,28 @@
         </div>
     </div>
     <div class="app-content">
-        <div class="container">
-            <h1>Welcome to SpeedyGeoTools</h1>
-            <p class="subtitle">The fast and practical toolkit for geocachers.</p>
-            <div class="welcome-message">
-                <p>🌱 <strong>SpeedyGeoTools is just getting started!</strong> Other tools will arrive soon to facilitate your adventures. Feel free to join our community on Discord to share your ideas and help us grow the project together.</p>
-            </div>
-            <div class="home-grid">
-                <a href="labels.html" style="text-decoration: none; color: inherit;">
-                    <div class="tool-card">
-                        <h2>Label Creator</h2>
-                        <p>Generate and print your labels with QR Code and custom options.</p>
-                    </div>
-                </a>
-                <a href="logbook.html" style="text-decoration: none; color: inherit;">
-                    <div class="tool-card">
-                        <h2>Logbook Creator</h2>
-                        <p>Instantly generate and print log sheets adapted to the size of your geocaches (Micro, Small, Regular).</p>
-                    </div>
-                </a>
-            </div>
-            <div class="widget-container">
-                <h2>Join the Discord community</h2>
-                <p>Come discuss geocaching, propose your ideas, or get help with your creations!</p>
-                <div class="iframe-wrapper">
-                    <iframe src="https://discord.com/widget?id=1491451481055039500&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-                </div>
-            </div>
+        <div class="container legal-content">
+            <h1>Legal Notice & Privacy Policy</h1>
+            <h2>1. Site Publisher</h2>
+            <p>This website is published personally by Julien Porcher (aka RodaLeRenard on geocaching.com). It is an open-source and free project made available to the Geocaching player community.</p>
+            <p>Source code available under the MIT license on GitHub.</p>
+            <h2>2. Hosting</h2>
+            <p>The site is hosted by <strong>GitHub Pages</strong>, a service provided by:</p>
+            <p>GitHub, Inc.<br>88 Colin P Kelly Jr St<br>San Francisco, CA 94107<br>United States</p>
+            <h2>3. Intellectual Property and Trademarks</h2>
+            <p>The term "Geocaching", as well as the four-square logo, are registered trademarks of Groundspeak, Inc. and are used with permission. SpeedyGeoTools is a third-party tool and is in no way affiliated, approved, associated, or sponsored by Groundspeak, Inc.</p>
+            <h2>4. Personal Data (GDPR) and Cookies</h2>
+            <p><strong>SpeedyGeoTools respects your privacy:</strong></p>
+            <ul>
+                <li><strong>No tracking cookies:</strong> This site uses no tracking cookies, audience analysis tools (Google Analytics, etc.), or advertising pixels.</li>
+                <li><strong>Local storage:</strong> Your logbook settings are saved seamlessly via your web browser's "localStorage" technology. This data remains strictly on your device and is never sent to or processed on a remote server.</li>
+                <li><strong>PDF Generation:</strong> The layout for printing is generated entirely on your own computer or phone.</li>
+            </ul>
         </div>
         <footer class="site-footer no-print">
             <p>Find SpeedyGeoTools useful? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Make a donation via PayPal</a> ❤️</p>
             <p class="disclaimer">
-                SpeedyGeoTools is a third-party tool created by a player. The Geocaching logo is a registered trademark of Groundspeak, Inc. used with permission. This site is not affiliated with, endorsed by, or sponsored by Groundspeak, Inc.<br>
+                SpeedyGeoTools is a third-party tool created by a player. The Geocaching logo is a registered trademark of Groundspeak, Inc. used with permission.<br>
                 <a href="legal.html">Legal Notice & Privacy Policy</a>
             </p>
         </footer>
