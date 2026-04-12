@@ -146,7 +146,7 @@ p.subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; m
 #cachesListContainer > div h3 { margin-top: 0; margin-bottom: 15px; color: var(--text-main); font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
 .form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
 .emergency-toggle { background-color: #ffebee; padding: 15px; border-radius: 8px; border: 1px solid #ffcdd2; margin-bottom: 25px; border-left: 4px solid #d32f2f; }
-.checkbox-group { display: flex; align-items: center; gap: 10px; }
+.checkbox-group { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; }
 .sub-checkbox { margin-left: 25px; margin-top: -10px; }
 .checkbox-group input { width: auto; accent-color: var(--primary-color); }
 label { display: block; font-weight: 500; color: var(--text-main); margin-bottom: 8px; font-size: 0.95rem; }

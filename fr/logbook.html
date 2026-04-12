@@ -34,6 +34,7 @@
                         <input type="file" id="importLogbook" accept=".json" onchange="importLogbookConfig(event)" style="display: none;">
                         <button onclick="document.getElementById('importLogbook').click()" class="btn-secondary">📁 Importer une configuration</button>
                     </div>
+                    
                     <div class="form-group checkbox-group emergency-toggle">
                         <input type="checkbox" id="isEmergency">
                         <label for="isEmergency" style="color: #d32f2f; font-weight: bold;">Ceci est un logbook de secours</label>
@@ -42,6 +43,16 @@
                         <label for="emergencyPseudo">Votre pseudo (Déposé par) :</label>
                         <input type="text" id="emergencyPseudo" placeholder="Ex: GeoTrouveTout">
                     </div>
+
+                    <div class="form-group">
+                        <label for="stripWidth">Largeur des bandes :</label>
+                        <select id="stripWidth">
+                            <option value="25">Micro (25 mm) - Sans tampons ni textes</option>
+                            <option value="35" selected>Petite (35 mm) - Standard</option>
+                            <option value="45">Normale (45 mm) - Large</option>
+                        </select>
+                    </div>
+
                     <div id="standardOptions">
                         <div class="form-group">
                             <label for="cacheName">Nom de la cache (optionnel) :</label>
@@ -64,10 +75,12 @@
                             <input type="text" id="qrUrl" placeholder="https://...">
                         </div>
                     </div>
+                    
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="hasWarning">
                         <label for="hasWarning">Imprimer l'avertissement Geocaching sur la première bande</label>
                     </div>
+                    
                     <div id="podiumOptions">
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="hasFtf">
@@ -86,18 +99,12 @@
                             <label for="hasStfTtfTampon">Agrandir les zones STF/TTF (Espace Tampon)</label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="stripWidth">Largeur des bandes :</label>
-                        <select id="stripWidth">
-                            <option value="25">Micro (25 mm) - Sans tampons ni textes</option>
-                            <option value="35" selected>Petite (35 mm) - Standard</option>
-                            <option value="45">Normale (45 mm) - Large</option>
-                        </select>
-                    </div>
+                    
                     <div class="form-group">
                         <label for="stripCount">Nombre total de bandes :</label>
                         <input type="number" id="stripCount" value="5" min="1" max="100">
                     </div>
+                    
                     <div class="form-group">
                         <label for="pdfLanguage">Langue du logbook imprimé :</label>
                         <select id="pdfLanguage">
@@ -111,6 +118,7 @@
                             <option value="cs">Čeština (Tchèque)</option>
                         </select>
                     </div>
+                    
                     <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
                         <button onclick="exportLogbookConfig()" class="btn-secondary" style="margin-bottom: 15px;">💾 Exporter la configuration</button>
                         <button onclick="generateAndPrint()">🖨️ Générer le PDF / Imprimer</button>

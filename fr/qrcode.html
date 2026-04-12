@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="SpeedyGeoTools - Créateur de QR Code">
+    <meta property="og:description" content="Générez et imprimez vos QR codes géocaching personnalisés.">
+    <meta property="og:image" content="https://speedygeotools.com/logo.png">
+    <meta property="og:url" content="https://speedygeotools.com/fr/qrcode.html">
+    <meta property="og:type" content="website">
     <title>Créateur de QR Code - SpeedyGeoTools</title>
+    <meta name="description" content="Générez et imprimez vos QR codes géocaching personnalisés.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="alternate" hreflang="en" href="https://speedygeotools.com/qrcode.html" />
+    <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/qrcode.html" />
+    <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/qrcode.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="icon" type="image/png" href="../favicon.png">
-    <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.6.2/dist/easy.qrcode.min.js"></script>
+    <link rel="canonical" href="https://speedygeotools.com/fr/qrcode.html" />
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
 </head>
 <body>
     <div id="sidebar-placeholder"></div>
-
     <main class="app-content">
         <div class="container no-print">
             <h1>Créateur de QR Code</h1>
             <p class="subtitle">Générez et imprimez vos QR codes géocaching personnalisés.</p>
             
-            <div class="main-layout">
+            <div class="main-layout" style="display:flex; gap: 30px;">
                 <div class="controls-panel">
                     <div class="form-group">
                         <label for="qrUrl">Lien (URL) :</label>
@@ -26,6 +38,14 @@
                     <div class="form-group">
                         <label for="qrTitle">Titre :</label>
                         <input type="text" id="qrTitle" placeholder="Ex: Cache Mystère">
+                    </div>
+                    <div class="form-group">
+                        <label for="qrSize">Taille de découpe (cm) :</label>
+                        <input type="number" id="qrSize" value="5" min="2" max="20" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="qrTitleSize">Taille du titre (pt) :</label>
+                        <input type="number" id="qrTitleSize" value="12" min="6" max="40">
                     </div>
                     <div class="form-group">
                         <label for="qrTitlePos">Position du Titre :</label>
@@ -43,28 +63,43 @@
                         <input type="color" id="qrColor" value="#02874D">
                     </div>
                     <div class="form-group">
-                        <label for="qrDesign">Design des points :</label>
+                        <label for="qrDesign">Style du motif :</label>
                         <select id="qrDesign">
-                            <option value="standard">Classique (Carrés)</option>
+                            <option value="square">Classique (Carrés)</option>
+                            <option value="dots">Points</option>
                             <option value="rounded">Arrondis</option>
+                            <option value="extra-rounded">Très arrondis</option>
+                            <option value="classy">Élégant</option>
+                            <option value="classy-rounded" selected>Élégant Arrondi</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="qrSize">Taille (en pixels) :</label>
-                        <input type="number" id="qrSize" value="300" min="100" max="1000">
+                        <label for="qrCornerSquare">Cadre des coins :</label>
+                        <select id="qrCornerSquare">
+                            <option value="square">Carrés</option>
+                            <option value="extra-rounded" selected>Arrondis</option>
+                            <option value="dot">Ronds</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="qrCornerDot">Centre des coins :</label>
+                        <select id="qrCornerDot">
+                            <option value="square">Carrés</option>
+                            <option value="dot" selected>Ronds</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="qrQuantity">Nombre d'exemplaires :</label>
-                        <input type="number" id="qrQuantity" value="10" min="1" max="100">
+                        <input type="number" id="qrQuantity" value="12" min="1" max="200">
                     </div>
-                    <div style="display:flex; gap:10px;">
-                        <button id="generateBtn">Générer</button>
-                        <button id="printBtn" class="btn-secondary" style="display:none;">Imprimer PDF</button>
+                    
+                    <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                        <button id="printBtn">🖨️ Générer le PDF / Imprimer</button>
                     </div>
                 </div>
 
-                <div class="preview-panel" id="previewPanel" style="display:none; flex:1;">
-                    <div class="widget-container" style="margin-top: 0; height: 100%;">
+                <div class="preview-panel" id="previewPanel" style="display:none; flex:1; position: sticky; top: 20px; align-self: flex-start;">
+                    <div class="widget-container" style="margin-top: 0; padding: 30px;">
                         <h2>Prévisualisation</h2>
                         <div id="singlePreview" style="margin: auto; padding-top: 20px;"></div>
                     </div>
@@ -75,8 +110,11 @@
         <div id="printContainer" class="print-only"></div>
 
         <footer class="site-footer no-print">
-            <p>SpeedyGeoTools vous est utile ? <a href="https://paypal.me/JulienPorcher" target="_blank">Faire un don</a> ❤️</p>
-            <a href="legal.html">Mentions Légales</a>
+            <p>SpeedyGeoTools vous est utile ? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Faites un don via PayPal</a> ❤️</p>
+            <p class="disclaimer">
+                SpeedyGeoTools est un outil tiers créé par un joueur. Le logo Geocaching est une marque déposée de Groundspeak, Inc. utilisée avec permission.<br>
+                <a href="legal.html">Mentions Légales & Données Personnelles</a>
+            </p>
         </footer>
     </main>
 
