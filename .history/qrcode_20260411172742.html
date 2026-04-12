@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créateur de QR Code - SpeedyGeoTools</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.6.2/dist/easy.qrcode.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="SpeedyGeoTools Logo" class="nav-logo">
+                SpeedyGeoTools
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                <li><a href="labels.html" data-i18n="nav_labels">Étiquettes</a></li>
+                <li><a href="logbook.html" data-i18n="nav_logbook">Logbook</a></li>
+                <li><a href="qrcode.html" class="active" data-i18n="nav_qrcode">QR Code</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="content no-print">
+            <h1 data-i18n="qrcode_title">Créateur de QR Code</h1>
+            
+            <div class="settings-panel">
+                <div class="form-group">
+                    <label for="qrUrl">Lien (URL) :</label>
+                    <input type="url" id="qrUrl" placeholder="https://coord.info/GC..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="qrTitle">Titre :</label>
+                    <input type="text" id="qrTitle" placeholder="Ex: Ma Cache Mystère">
+                </div>
+                
+                <div class="form-group">
+                    <label for="qrTitlePos">Position du Titre :</label>
+                    <select id="qrTitlePos">
+                        <option value="bottom">En dessous</option>
+                        <option value="top">Au-dessus</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="qrLogo">Logo (optionnel) :</label>
+                    <input type="file" id="qrLogo" accept="image/png, image/jpeg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="qrColor">Couleur du QR Code :</label>
+                    <input type="color" id="qrColor" value="#000000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="qrDesign">Design des points :</label>
+                    <select id="qrDesign">
+                        <option value="standard">Classique (Carrés)</option>
+                        <option value="rounded">Arrondis</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="qrSize">Taille (en pixels) :</label>
+                    <input type="number" id="qrSize" value="200" min="100" max="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="qrQuantity">Nombre d'exemplaires :</label>
+                    <input type="number" id="qrQuantity" value="1" min="1" max="100">
+                </div>
+
+                <button id="generateBtn" class="btn primary">Générer et Prévisualiser</button>
+                <button id="printBtn" class="btn secondary" style="display:none;">Imprimer en PDF</button>
+            </div>
+
+            <div class="preview-panel" id="previewPanel" style="display:none; text-align: center; margin-top: 30px;">
+                <h2>Prévisualisation</h2>
+                <div id="singlePreview" style="display:inline-block; border: 1px dashed #ccc; padding: 20px; background: #fff;">
+                </div>
+            </div>
+        </div>
+
+        <div id="printContainer" class="print-only">
+        </div>
+    </main>
+
+    <footer class="no-print">
+        <p>&copy; 2026 SpeedyGeoTools. <a href="legal.html">Mentions légales</a></p>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/qrcode.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
