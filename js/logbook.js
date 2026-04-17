@@ -188,42 +188,50 @@ function generateAndPrint() {
                 officialLogoBox.innerHTML = '<img src="/Logo_Geocaching_4squares_Black.png" alt="Logo"><div>GEOCACHING.COM</div>';
                 strip.appendChild(officialLogoBox);
 
-                if (!isEmergency) {
-                    if (currentLogoBase64) {
-                        const logoContainer = document.createElement('div');
-                        logoContainer.className = 'logo-container';
-                        const img = document.createElement('img');
-                        img.src = currentLogoBase64;
-                        img.className = 'strip-logo';
-                        logoContainer.appendChild(img);
-                        strip.appendChild(logoContainer);
-                    }
-                    const createdBox = document.createElement('div');
-                    createdBox.className = 'created-on';
-                    createdBox.innerText = t.createdOn || "speedygeotools.com";
-                    if (is25mm) createdBox.style.fontSize = '5pt';
-                    strip.appendChild(createdBox);
-                    if (cacheName !== '' || cacheCode !== '') {
-                        const infoBox = document.createElement('div');
-                        infoBox.className = 'cache-info';
-                        if (cacheName !== '') {
-                            const strong = document.createElement('strong');
-                            strong.innerText = cacheName;
-                            infoBox.appendChild(strong);
-                        }
-                        if (cacheCode !== '') {
-                            const span = document.createElement('span');
-                            span.innerText = cacheCode;
-                            infoBox.appendChild(span);
-                        }
-                        strip.appendChild(infoBox);
-                    }
+                if (!isEmergency && currentLogoBase64) {
+                    const logoContainer = document.createElement('div');
+                    logoContainer.className = 'logo-container';
+                    const img = document.createElement('img');
+                    img.src = currentLogoBase64;
+                    img.className = 'strip-logo';
+                    logoContainer.appendChild(img);
+                    strip.appendChild(logoContainer);
                 }
 
-                if (hasWarning || isEmergency) {
+                const createdBox = document.createElement('div');
+                createdBox.className = 'created-on';
+                createdBox.innerText = t.createdOn || "speedygeotools.com";
+                if (is25mm) createdBox.style.fontSize = '5pt';
+                strip.appendChild(createdBox);
+
+                if (isEmergency) {
+                    const emTitleBox = document.createElement('div');
+                    emTitleBox.className = 'cache-info';
+                    const strong = document.createElement('strong');
+                    strong.innerText = t.emTitle || "LOGBOOK DE SECOURS";
+                    emTitleBox.appendChild(strong);
+                    strip.appendChild(emTitleBox);
+                } else if (cacheName !== '' || cacheCode !== '') {
+                    const infoBox = document.createElement('div');
+                    infoBox.className = 'cache-info';
+                    if (cacheName !== '') {
+                        const strong = document.createElement('strong');
+                        strong.innerText = cacheName;
+                        infoBox.appendChild(strong);
+                    }
+                    if (cacheCode !== '') {
+                        const span = document.createElement('span');
+                        span.innerText = cacheCode;
+                        infoBox.appendChild(span);
+                    }
+                    strip.appendChild(infoBox);
+                }
+
+                if (hasWarning) {
                     const warningBox = document.createElement('div');
                     warningBox.className = 'warning-text';
-                    warningBox.innerHTML = `<strong>${t.warnTitle || "Félicitations!"}</strong><br>${isEmergency ? (t.emWarning || "LOGBOOK DE SECOURS") : (t.warnBody || "Ceci fait partie du Geocaching...")}`;
+                    warningBox.style.textAlign = 'justify';
+                    warningBox.innerHTML = `<strong>${t.warnTitle || "Félicitations!"}</strong>${t.warnBody || "Ceci fait partie du Geocaching..."}`;
                     strip.appendChild(warningBox);
                 }
 
@@ -241,6 +249,7 @@ function generateAndPrint() {
                 if (isEmergency) {
                     const emergencyBox = document.createElement('div');
                     emergencyBox.className = 'emergency-box';
+                    emergencyBox.style.textAlign = 'center';
                     const pseudoDisplay = emergencyPseudo !== '' ? emergencyPseudo : '................';
                     emergencyBox.innerHTML = `<strong>${t.emBy || "Par:"}</strong> ${pseudoDisplay}`;
                     strip.appendChild(emergencyBox);
@@ -268,10 +277,12 @@ function generateAndPrint() {
 
                 const logsContainer = document.createElement('div');
                 logsContainer.className = 'logs-container';
-                const rowCount = is25mm ? 35 : 28;
+                const rowCount = 50;
                 for (let r = 0; r < rowCount; r++) {
                     const row = document.createElement('div');
                     row.className = 'log-row';
+                    row.style.flex = 'none';
+                    row.style.height = is25mm ? '7.6mm' : '9.5mm';
                     row.innerHTML = `<div class="log-date">${is25mm ? '' : (t.dateEmpty || "Date")}</div><div class="log-name">${is25mm ? '' : (t.pseudoEmpty || "Pseudo")}</div>`;
                     logsContainer.appendChild(row);
                 }
