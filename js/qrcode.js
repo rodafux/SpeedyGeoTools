@@ -127,8 +127,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const preWrapper = document.createElement('div');
         preWrapper.className = 'cut-wrapper';
+        preWrapper.style.margin = '0 auto';
         singlePreview.appendChild(preWrapper);
+        
         await createQRCodeElement(preWrapper, true);
+        
+        // Ajustement visuel pour que la prévisualisation rentre toujours dans l'écran
+        const panelWidth = singlePreview.clientWidth || (previewPanel.clientWidth - 60);
+        const wrapperWidth = preWrapper.offsetWidth;
+        
+        if (wrapperWidth > panelWidth && panelWidth > 0) {
+            const scale = panelWidth / wrapperWidth;
+            preWrapper.style.transform = `scale(${scale})`;
+            preWrapper.style.transformOrigin = 'top center';
+            singlePreview.style.height = (preWrapper.offsetHeight * scale) + 'px';
+        } else {
+            preWrapper.style.transform = 'none';
+            singlePreview.style.height = 'auto';
+        }
     }
 
     if (printBtn) {
@@ -202,7 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const sizeCm = parseFloat(document.getElementById('qrSize').value) || 5;
             const renderRes = 1024;
             
-            const boxWidth = isPreview ? 6 : sizeCm;
+            // Toujours générer l'élément à sa taille absolue pour garder une proportion parfaite du texte (pt)
+            const boxWidth = sizeCm;
+            
             container.style.width = boxWidth + 'cm';
             container.style.height = boxWidth + 'cm';
             container.style.padding = '1mm';
