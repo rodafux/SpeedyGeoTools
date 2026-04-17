@@ -19,8 +19,11 @@
         .section-header { text-align: center; margin-top: 50px; margin-bottom: 30px; }
         .section-title { font-size: 1.8rem; color: var(--text-main); border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 8px; }
         
-        .centered-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px; }
-        .info-card { cursor: default !important; width: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .centered-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px; max-width: 850px; margin-left: auto; margin-right: auto; }
+        .info-card { cursor: default !important; width: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 24px; box-sizing: border-box; }
+        .info-icon { font-size: 2.2rem; margin-bottom: 12px; }
+        .info-content h3 { color: var(--primary-color); margin-bottom: 8px; margin-top: 0; }
+        .info-content p { font-size: 0.85rem; margin: 0; color: var(--text-muted); }
         
         .lexicon-search-container { display: flex; justify-content: center; width: 100%; margin: 30px 0; position: sticky; top: 10px; z-index: 10; }
         .lexicon-search-input { width: 100%; max-width: 600px; box-shadow: var(--shadow-md); border: 2px solid var(--primary-color); border-radius: 25px; padding: 12px 25px; font-size: 1rem; outline: none; }
@@ -31,6 +34,23 @@
         .tag { background: var(--primary-color); color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; font-size: 0.8rem; margin-right: 10px; display: inline-block; min-width: 55px; text-align: center; }
         
         .no-results { display: none; padding: 30px; text-align: center; color: var(--text-muted); width: 100%; font-style: italic; }
+
+        @media (max-width: 768px) {
+            .section-header { margin-top: 30px; margin-bottom: 20px; }
+            .section-title { font-size: 1.5rem; }
+            
+            .centered-grid { gap: 10px; margin-bottom: 25px; }
+            .info-card { width: 100%; flex-direction: row; text-align: left; padding: 15px; margin-bottom: 0; align-items: center; }
+            .info-icon { font-size: 1.8rem; margin-bottom: 0; margin-right: 15px; width: 40px; text-align: center; flex-shrink: 0; }
+            .info-content h3 { margin-bottom: 2px; font-size: 1.1rem; }
+            
+            .list-grid { grid-template-columns: 1fr; gap: 8px; }
+            .list-item { padding: 10px 12px; font-size: 0.85rem; }
+            .tag { padding: 2px 6px; font-size: 0.75rem; min-width: 45px; }
+            
+            .lexicon-search-container { margin: 15px 0; }
+            .lexicon-search-input { padding: 10px 20px; font-size: 0.9rem; }
+        }
     </style>
     <script>
         (function() {
@@ -61,29 +81,39 @@
             </div>
             <div class="centered-grid">
                 <div class="tool-card info-card">
-                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🤏</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Nano</h3>
-                    <p style="font-size: 0.85rem;">&lt; 10ml. Nut-sized, usually magnetic.</p>
+                    <div class="info-icon">🤏</div>
+                    <div class="info-content">
+                        <h3>Nano</h3>
+                        <p>&lt; 10ml. Nut-sized, usually magnetic.</p>
+                    </div>
                 </div>
                 <div class="tool-card info-card">
-                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🧪</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Micro</h3>
-                    <p style="font-size: 0.85rem;">&lt; 100ml. Ex: Film canister, PET tube.</p>
+                    <div class="info-icon">🧪</div>
+                    <div class="info-content">
+                        <h3>Micro</h3>
+                        <p>&lt; 100ml. Ex: Film canister, PET tube.</p>
+                    </div>
                 </div>
                 <div class="tool-card info-card">
-                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🍱</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Small</h3>
-                    <p style="font-size: 0.85rem;">100ml to 1L. Holds logbook and small items.</p>
+                    <div class="info-icon">🍱</div>
+                    <div class="info-content">
+                        <h3>Small</h3>
+                        <p>100ml to 1L. Holds logbook and small items.</p>
+                    </div>
                 </div>
                 <div class="tool-card info-card">
-                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🧰</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Regular</h3>
-                    <p style="font-size: 0.85rem;">1L to 20L. Tupperware or Ammo can size.</p>
+                    <div class="info-icon">🧰</div>
+                    <div class="info-content">
+                        <h3>Regular</h3>
+                        <p>1L to 20L. Tupperware or Ammo can size.</p>
+                    </div>
                 </div>
                 <div class="tool-card info-card">
-                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🪣</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Large</h3>
-                    <p style="font-size: 0.85rem;">&gt; 20L. Large buckets or chests.</p>
+                    <div class="info-icon">🪣</div>
+                    <div class="info-content">
+                        <h3>Large</h3>
+                        <p>&gt; 20L. Large buckets or chests.</p>
+                    </div>
                 </div>
             </div>
 
@@ -107,8 +137,8 @@
                 <h2 class="section-title">📖 Lexicon & Jargon</h2>
             </div>
             <div class="lexicon-search-container">
-                            <input type="text" id="lexiconSearch" class="lexicon-search-input" placeholder="Search an acronym or word (FTF, Spoiler, Muggle...)" onkeyup="filterLexicon()">
-                        </div>
+                <input type="text" id="lexiconSearch" class="lexicon-search-input" placeholder="Search an acronym or word (FTF, Spoiler, Muggle...)" onkeyup="filterLexicon()">
+            </div>
 
             <div class="list-grid" id="lexiconGrid">
                 <div class="list-item searchable"><span class="tag">TFTC</span> <strong>Thanks For The Cache</strong> (MPLC).</div>
