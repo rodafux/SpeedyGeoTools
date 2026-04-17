@@ -4,61 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="SpeedyGeoTools - Accueil">
-    <meta property="og:description" content="La boîte à outils rapide et pratique du géocacheur. Générez des étiquettes et des logbooks instantanément.">
+    <meta property="og:description" content="La boîte à outils et ressources indispensables du géocacheur. Guide des tailles, lexique complet et outils de recherche.">
     <meta property="og:image" content="https://speedygeotools.com/logo.png">
     <meta property="og:url" content="https://speedygeotools.com/fr/">
     <meta property="og:type" content="website">
-    <title>SpeedyGeoTools - Accueil</title>
-    <meta name="description" content="La boîte à outils rapide et pratique du géocacheur. Générez des étiquettes et des logbooks instantanément.">
-    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <link rel="canonical" href="https://speedygeotools.com/fr/" />
     <link rel="alternate" hreflang="en" href="https://speedygeotools.com/" />
     <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/" />
     <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>SpeedyGeoTools - Accueil</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="canonical" href="https://speedygeotools.com/fr/" />
+    <style>
+        .section-header { text-align: center; margin-top: 50px; margin-bottom: 30px; }
+        .section-title { font-size: 1.8rem; color: var(--text-main); border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 8px; }
+        
+        .centered-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px; }
+        .info-card { cursor: default !important; width: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        
+        .lexicon-search-container { display: flex; justify-content: center; width: 100%; margin: 30px 0; position: sticky; top: 10px; z-index: 10; }
+        .lexicon-search-input { width: 100%; max-width: 600px; box-shadow: var(--shadow-md); border: 2px solid var(--primary-color); border-radius: 25px; padding: 12px 25px; font-size: 1rem; outline: none; }
+
+        .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; justify-content: center; }
+        .list-item { background: #fff; border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; font-size: 0.95rem; transition: all 0.2s; box-shadow: var(--shadow-sm); }
+        .list-item:hover { border-color: var(--primary-color); transform: translateY(-2px); }
+        .tag { background: var(--primary-color); color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; font-size: 0.8rem; margin-right: 10px; display: inline-block; min-width: 55px; text-align: center; }
+        
+        .no-results { display: none; padding: 30px; text-align: center; color: var(--text-muted); width: 100%; font-style: italic; }
+    </style>
 </head>
 <body>
     <div id="sidebar-placeholder"></div>
     <main class="app-content">
         <div class="container">
-            <h1>Bienvenue sur SpeedyGeoTools</h1>
-            <p class="subtitle">La boîte à outils rapide et pratique du géocacheur.</p>
-            <div class="welcome-message">
-                <p>🌱 <strong>SpeedyGeoTools n'est qu'à ses débuts !</strong> D'autres outils arriveront prochainement pour faciliter vos aventures. N'hésitez pas à rejoindre notre communauté sur Discord pour partager vos idées et nous aider à faire grandir le projet ensemble.</p>
+            <div style="text-align: center;">
+                <h1>Bienvenue sur SpeedyGeoTools</h1>
+                <p class="subtitle">Toutes les connaissances et outils pour vos sorties Geocaching.</p>
             </div>
-            <div class="home-grid">
-                <a href="labels.html" style="text-decoration: none; color: inherit;">
-                    <div class="tool-card">
-                        <h2>Créateur d'étiquettes</h2>
-                        <p>Générez et imprimez vos étiquettes avec QR Code et options personnalisées.</p>
-                    </div>
-                </a>
-                <a href="logbook.html" style="text-decoration: none; color: inherit;">
-                    <div class="tool-card">
-                        <h2>Créateur de logbook</h2>
-                        <p>Générez et imprimez instantanément des feuilles de log adaptées à la taille de vos géocaches (Micro, Small, Regular).</p>
-                    </div>
-                </a>
+            
+            <div class="welcome-message" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p>🚀 <strong>Astuce :</strong> Utilisez la barre de recherche pour trouver rapidement la définition d'un acronyme ou d'un terme spécifique !</p>
             </div>
-            <div class="widget-container">
-                <h2>Rejoignez la communauté Discord</h2>
-                <p>Venez discuter géocaching, proposer vos idées ou obtenir de l'aide pour vos créations !</p>
+
+            <div class="section-header">
+                <h2 class="section-title">📦 Guide des tailles</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🤏</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Nano</h3>
+                    <p style="font-size: 0.85rem;">&lt; 10ml. Taille d'un écrou, souvent aimantée.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🧪</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Micro</h3>
+                    <p style="font-size: 0.85rem;">&lt; 100ml. Ex : Tube de pellicule, tube PET.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🍱</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Small</h3>
+                    <p style="font-size: 0.85rem;">100ml à 1L. Contient un logbook et petits objets.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🧰</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Regular</h3>
+                    <p style="font-size: 0.85rem;">1L à 20L. Boîte type Tupperware ou munitions.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🪣</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Large</h3>
+                    <p style="font-size: 0.85rem;">&gt; 20L. Grands seaux ou coffres.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">🔍 Types de caches</h2>
+            </div>
+            <div class="list-grid">
+                <div class="list-item">🟢 <strong>Traditionnelle</strong> : Cache simple située aux coordonnées indiquées.</div>
+                <div class="list-item">🟠 <strong>Multi-cache</strong> : Parcours avec plusieurs étapes (WP) pour trouver le final.</div>
+                <div class="list-item">🔵 <strong>Mystery / Puzzle</strong> : Énigme à résoudre pour trouver les coordonnées.</div>
+                <div class="list-item">🌍 <strong>EarthCache</strong> : Lieu d'intérêt géologique. Pas de boîte, questions à envoyer.</div>
+                <div class="list-item">📬 <strong>Letterbox Hybrid</strong> : Contient un tampon pour votre logbook personnel.</div>
+                <div class="list-item">👻 <strong>Virtuelle</strong> : Lieu à visiter sans boîte physique (photo ou question demandée).</div>
+                <div class="list-item">📱 <strong>Wherigo</strong> : Aventure interactive utilisant une application dédiée.</div>
+                <div class="list-item">📅 <strong>Event</strong> : Rencontre sociale organisée entre géocacheurs.</div>
+                <div class="list-item">🧩 <strong>Challenge</strong> : Mystery demandant d'avoir rempli un défi spécifique.</div>
+                <div class="list-item">🏥 <strong>Lab Cache</strong> : Expérience interactive (Adventure Lab) via smartphone.</div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">📖 Lexique & Jargon</h2>
+            </div>
+            <div class="lexicon-search-container">
+                            <input type="text" id="lexiconSearch" class="lexicon-search-input" placeholder="Rechercher un acronyme ou un mot (FTF, Spoiler, Moldu...)" onkeyup="filterLexicon()">
+                        </div>
+
+            <div class="list-grid" id="lexiconGrid">
+                <div class="list-item searchable"><span class="tag">MPLC</span> <strong>Merci Pour La Cache</strong> (Equivalent de TFTC).</div>
+                <div class="list-item searchable"><span class="tag">FTF</span> <strong>First To Find</strong> : Le tout premier à signer le logbook.</div>
+                <div class="list-item searchable"><span class="tag">STF</span> <strong>Second To Find</strong> : Le deuxième trouveur.</div>
+                <div class="list-item searchable"><span class="tag">TTF</span> <strong>Third To Find</strong> : Le troisième trouveur.</div>
+                <div class="list-item searchable"><span class="tag">DNF</span> <strong>Did Not Find</strong> : Log indiquant que vous n'avez pas trouvé.</div>
+                <div class="list-item searchable"><span class="tag">BYOP</span> <strong>Bring Your Own Pen</strong> : Prenez votre propre stylo.</div>
+                <div class="list-item searchable"><span class="tag">GZ</span> <strong>Ground Zero</strong> : Point exact des coordonnées GPS.</div>
+                <div class="list-item searchable"><span class="tag">CO</span> <strong>Cache Owner</strong> : Le propriétaire/créateur de la cache.</div>
+                <div class="list-item searchable"><span class="tag">TB</span> <strong>Trackable</strong> : Objet voyageur avec un code de suivi unique.</div>
+                <div class="list-item searchable"><span class="tag">Molu</span> <strong>Moldu</strong> : Personne qui ne pratique pas le géocaching.</div>
+                <div class="list-item searchable"><span class="tag">Spoiler</span> Indice visuel ou textuel révélant l'emplacement.</div>
+                <div class="list-item searchable"><span class="tag">WP</span> <strong>Waypoint</strong> : Point de passage ou étape d'un parcours.</div>
+                <div class="list-item searchable"><span class="tag">Hint</span> Indice supplémentaire pour aider à la recherche.</div>
+                <div class="list-item searchable"><span class="tag">P&G</span> <strong>Park & Grab</strong> : Cache rapide d'accès (Drive-in).</div>
+                <div class="list-item searchable"><span class="tag">CITO</span> <strong>Cache In Trash Out</strong> : Ramasser les déchets en jouant.</div>
+                <div class="list-item searchable"><span class="tag">Log</span> Message publié sur le site ou écrit dans le registre.</div>
+                <div class="list-item searchable"><span class="tag">SWAG</span> Petits objets d'échange trouvés dans les boîtes.</div>
+                <div class="list-item searchable"><span class="tag">D/T</span> Cotation de la Difficulté et du Terrain (de 1 à 5).</div>
+                <div class="list-item searchable"><span class="tag">SOS</span> <strong>Sign On Site</strong> : Action de signer le logbook sur place.</div>
+                <div class="list-item searchable"><span class="tag">Reviewer</span> Bénévole qui vérifie et publie les caches sur le site.</div>
+                
+                <div class="no-results" id="noResults">Aucun terme ne correspond à votre recherche.</div>
+            </div>
+
+            <div class="widget-container" style="margin-top: 60px;">
+                <h2>Communauté Discord</h2>
                 <div class="iframe-wrapper">
-                    <iframe src="https://discord.com/widget?id=1491451481055039500&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                    <iframe src="https://discord.com/widget?id=1491451481055039500&theme=dark" width="350" height="400" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
             </div>
         </div>
-        <footer class="site-footer no-print">
-            <p>SpeedyGeoTools vous est utile ? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Faites un don via PayPal</a> ❤️</p>
-            <p class="disclaimer">
-                SpeedyGeoTools est un outil tiers créé par un joueur. Le logo Geocaching est une marque déposée de Groundspeak, Inc. utilisée avec permission. Ce site n'est ni affilié, ni approuvé, ni sponsorisé par Groundspeak, Inc.<br>
-                <a href="legal.html">Mentions Légales & Données Personnelles</a>
-            </p>
+        
+        <footer class="site-footer">
+            <p>SpeedyGeoTools | <a href="legal.html">Mentions Légales</a></p>
         </footer>
     </main>
+
+    <script>
+        function filterLexicon() {
+            const input = document.getElementById('lexiconSearch');
+            const filter = input.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const items = document.getElementsByClassName('searchable');
+            const noResults = document.getElementById('noResults');
+            let visibleCount = 0;
+
+            for (let i = 0; i < items.length; i++) {
+                const text = items[i].textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                if (text.includes(filter)) {
+                    items[i].style.display = "";
+                    visibleCount++;
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+            noResults.style.display = visibleCount === 0 ? "block" : "none";
+        }
+    </script>
     <script src="../js/main.js"></script>
     <script src="../js/sidebar.js"></script>
 </body>

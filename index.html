@@ -3,72 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The fast and practical toolkit for geocachers.">
     <meta property="og:title" content="SpeedyGeoTools - Home">
-    <meta property="og:description" content="The fast and practical toolkit for geocachers. Instantly generate custom labels and logbooks.">
+    <meta property="og:description" content="The fast and practical toolkit for geocachers.">
     <meta property="og:image" content="https://speedygeotools.com/logo.png">
     <meta property="og:url" content="https://speedygeotools.com/">
-    <meta property="og:type" content="website">
-    <title>SpeedyGeoTools - Home</title>
-    <meta name="description" content="The fast and practical toolkit for geocachers. Instantly generate custom labels and logbooks.">
+<title>SpeedyGeoTools - Home</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="canonical" href="https://speedygeotools.com/" />
     <link rel="alternate" hreflang="en" href="https://speedygeotools.com/" />
     <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/" />
     <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="canonical" href="https://speedygeotools.com/" />
+    <style>
+        .section-header { text-align: center; margin-top: 50px; margin-bottom: 30px; }
+        .section-title { font-size: 1.8rem; color: var(--text-main); border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 8px; }
+        
+        .centered-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px; }
+        .info-card { cursor: default !important; width: 220px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        
+        .lexicon-search-container { display: flex; justify-content: center; width: 100%; margin: 30px 0; position: sticky; top: 10px; z-index: 10; }
+        .lexicon-search-input { width: 100%; max-width: 600px; box-shadow: var(--shadow-md); border: 2px solid var(--primary-color); border-radius: 25px; padding: 12px 25px; font-size: 1rem; outline: none; }
+
+        .list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; justify-content: center; }
+        .list-item { background: #fff; border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; font-size: 0.95rem; transition: all 0.2s; box-shadow: var(--shadow-sm); }
+        .list-item:hover { border-color: var(--primary-color); transform: translateY(-2px); }
+        .tag { background: var(--primary-color); color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; font-size: 0.8rem; margin-right: 10px; display: inline-block; min-width: 55px; text-align: center; }
+        
+        .no-results { display: none; padding: 30px; text-align: center; color: var(--text-muted); width: 100%; font-style: italic; }
+    </style>
     <script>
         (function() {
-            var supportedLangs = ['fr'];
-            var userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
-            if (!sessionStorage.getItem('lang_redirect') && supportedLangs.indexOf(userLang) !== -1) {
-                sessionStorage.setItem('lang_redirect', 'true');
-                window.location.replace(userLang + '/index.html');
-            }
-        })();
+                    var supportedLangs = ['fr'];
+                    var userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
+                    if (!sessionStorage.getItem('lang_redirect') && supportedLangs.indexOf(userLang) !== -1) {
+                        sessionStorage.setItem('lang_redirect', 'true');
+                        window.location.replace(userLang + '/');
+                    }
+                })();
     </script>
 </head>
 <body>
     <div id="sidebar-placeholder"></div>
     <main class="app-content">
         <div class="container">
-            <h1>Welcome to SpeedyGeoTools</h1>
-            <p class="subtitle">The fast and practical toolkit for geocachers.</p>
-            <div class="welcome-message">
-                <p>🌱 <strong>SpeedyGeoTools is just getting started!</strong> Other tools will arrive soon to facilitate your adventures. Feel free to join our community on Discord to share your ideas and help us grow the project together.</p>
+            <div style="text-align: center;">
+                <h1>Welcome to SpeedyGeoTools</h1>
+                <p class="subtitle">All the knowledge and tools for your Geocaching trips.</p>
             </div>
-            <div class="home-grid">
-                <a href="labels.html" style="text-decoration: none; color: inherit;">
-                    <div class="tool-card">
-                        <h2>Label Creator</h2>
-                        <p>Generate and print your labels with QR Code and custom options.</p>
-                    </div>
-                </a>
-                <a href="logbook.html" style="text-decoration: none; color: inherit;">
-                    <div class="tool-card">
-                        <h2>Logbook Creator</h2>
-                        <p>Instantly generate and print log sheets adapted to the size of your geocaches (Micro, Small, Regular).</p>
-                    </div>
-                </a>
+            
+            <div class="welcome-message" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p>🚀 <strong>Tip:</strong> Use the search bar to quickly find the definition of an acronym or specific term!</p>
             </div>
-            <div class="widget-container">
-                <h2>Join the Discord community</h2>
-                <p>Come discuss geocaching, propose your ideas, or get help with your creations!</p>
+
+            <div class="section-header">
+                <h2 class="section-title">📦 Size Guide</h2>
+            </div>
+            <div class="centered-grid">
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🤏</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Nano</h3>
+                    <p style="font-size: 0.85rem;">&lt; 10ml. Nut-sized, usually magnetic.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🧪</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Micro</h3>
+                    <p style="font-size: 0.85rem;">&lt; 100ml. Ex: Film canister, PET tube.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🍱</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Small</h3>
+                    <p style="font-size: 0.85rem;">100ml to 1L. Holds logbook and small items.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🧰</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Regular</h3>
+                    <p style="font-size: 0.85rem;">1L to 20L. Tupperware or Ammo can size.</p>
+                </div>
+                <div class="tool-card info-card">
+                    <div style="font-size: 2.2rem; margin-bottom: 12px;">🪣</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 8px;">Large</h3>
+                    <p style="font-size: 0.85rem;">&gt; 20L. Large buckets or chests.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">🔍 Cache Types</h2>
+            </div>
+            <div class="list-grid">
+                <div class="list-item">🟢 <strong>Traditional</strong>: Simple cache at the posted coordinates.</div>
+                <div class="list-item">🟠 <strong>Multi-cache</strong> : Visit several stages (WPs) to reach the final.</div>
+                <div class="list-item">🔵 <strong>Mystery / Puzzle</strong> : Solve a riddle to find the coordinates.</div>
+                <div class="list-item">🌍 <strong>EarthCache</strong> : Geological site. No box, answer questions to log.</div>
+                <div class="list-item">📬 <strong>Letterbox Hybrid</strong> : Contains a stamp for your personal logbook.</div>
+                <div class="list-item">👻 <strong>Virtual</strong> : Location to visit with no box (photo/question required).</div>
+                <div class="list-item">📱 <strong>Wherigo</strong> : Interactive adventure via a dedicated app.</div>
+                <div class="list-item">📅 <strong>Event</strong> : An organized social gathering for geocachers.</div>
+                <div class="list-item">🧩 <strong>Challenge</strong> : Mystery cache requiring a specific goal completion.</div>
+                <div class="list-item">🏥 <strong>Lab Cache</strong> : Interactive experience (Adventure Lab) via smartphone.</div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">📖 Lexicon & Jargon</h2>
+            </div>
+            <div class="lexicon-search-container">
+                            <input type="text" id="lexiconSearch" class="lexicon-search-input" placeholder="Search an acronym or word (FTF, Spoiler, Muggle...)" onkeyup="filterLexicon()">
+                        </div>
+
+            <div class="list-grid" id="lexiconGrid">
+                <div class="list-item searchable"><span class="tag">TFTC</span> <strong>Thanks For The Cache</strong> (MPLC).</div>
+                <div class="list-item searchable"><span class="tag">FTF</span> <strong>First To Find</strong> : The very first person to sign the log.</div>
+                <div class="list-item searchable"><span class="tag">STF</span> <strong>Second To Find</strong> : The second finder.</div>
+                <div class="list-item searchable"><span class="tag">TTF</span> <strong>Third To Find</strong> : The third finder.</div>
+                <div class="list-item searchable"><span class="tag">DNF</span> <strong>Did Not Find</strong> : A log entry for failed searches.</div>
+                <div class="list-item searchable"><span class="tag">BYOP</span> <strong>Bring Your Own Pen</strong> : Carry your own writing tool.</div>
+                <div class="list-item searchable"><span class="tag">GZ</span> <strong>Ground Zero</strong> : The exact spot of the coordinates.</div>
+                <div class="list-item searchable"><span class="tag">CO</span> <strong>Cache Owner</strong> : The person who placed the cache.</div>
+                <div class="list-item searchable"><span class="tag">TB</span> <strong>Trackable</strong> : An item with a unique tracking code.</div>
+                <div class="list-item searchable"><span class="tag">Muggle</span> Person unaware of the geocaching game.</div>
+                <div class="list-item searchable"><span class="tag">Spoiler</span> Clue or photo revealing the location.</div>
+                <div class="list-item searchable"><span class="tag">WP</span> <strong>Waypoint</strong> : An intermediate stage or location.</div>
+                <div class="list-item searchable"><span class="tag">Hint</span> Extra help provided by the owner.</div>
+                <div class="list-item searchable"><span class="tag">P&G</span> <strong>Park & Grab</strong> : A quick cache near parking (Drive-in).</div>
+                <div class="list-item searchable"><span class="tag">CITO</span> <strong>Cache In Trash Out</strong> : Picking up litter while playing.</div>
+                <div class="list-item searchable"><span class="tag">Log</span> Written record in the logbook or on the website.</div>
+                <div class="list-item searchable"><span class="tag">SWAG</span> Small items left for trading in caches.</div>
+                <div class="list-item searchable"><span class="tag">D/T</span> Rating of Difficulty and Terrain (from 1 to 5).</div>
+                <div class="list-item searchable"><span class="tag">SOS</span> <strong>Sign On Site</strong> : Signing the logbook at the location.</div>
+                <div class="list-item searchable"><span class="tag">Reviewer</span> Volunteer who verifies and publishes caches.</div>
+                
+                <div class="no-results" id="noResults">No terms match your search.</div>
+            </div>
+
+            <div class="widget-container" style="margin-top: 60px;">
+                <h2>Discord Community</h2>
                 <div class="iframe-wrapper">
-                    <iframe src="https://discord.com/widget?id=1491451481055039500&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                    <iframe src="https://discord.com/widget?id=1491451481055039500&theme=dark" width="350" height="400" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
             </div>
         </div>
-        <footer class="site-footer no-print">
-            <p>Find SpeedyGeoTools useful? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Make a donation via PayPal</a> ❤️</p>
-            <p class="disclaimer">
-                SpeedyGeoTools is a third-party tool created by a player. The Geocaching logo is a registered trademark of Groundspeak, Inc. used with permission. This site is not affiliated with, endorsed by, or sponsored by Groundspeak, Inc.<br>
-                <a href="legal.html">Legal Notice & Privacy Policy</a>
-            </p>
+        
+        <footer class="site-footer">
+            <p>SpeedyGeoTools | <a href="legal.html">Legal Notice</a></p>
         </footer>
     </main>
+
+    <script>
+        function filterLexicon() {
+            const input = document.getElementById('lexiconSearch');
+            const filter = input.value.toLowerCase();
+            const items = document.getElementsByClassName('searchable');
+            const noResults = document.getElementById('noResults');
+            let visibleCount = 0;
+
+            for (let i = 0; i < items.length; i++) {
+                const text = items[i].textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    items[i].style.display = "";
+                    visibleCount++;
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+            noResults.style.display = visibleCount === 0 ? "block" : "none";
+        }
+    </script>
     <script src="js/main.js"></script>
     <script src="js/sidebar.js"></script>
 </body>
