@@ -8,8 +8,6 @@
         const userLang = navigator.language || navigator.userLanguage;
         const shortLang = userLang.split('-')[0].toLowerCase();
         
-        // Auto-traduction Google uniquement si le visiteur n'est ni anglais, ni français
-        // (Car ces deux langues ont maintenant leurs propres pages natives)
         if (shortLang !== 'fr' && shortLang !== 'en') {
             document.cookie = "googtrans=/en/" + shortLang + "; path=/";
             document.cookie = "googtrans=/en/" + shortLang + "; domain=." + location.hostname + "; path=/";
@@ -18,7 +16,6 @@
 })();
 
 function googleTranslateElementInit() {
-    // La langue de base du site pour Google Translate est maintenant l'anglais
     new google.translate.TranslateElement({
         pageLanguage: 'en',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
@@ -46,16 +43,35 @@ function filterTools() {
     const links = nav.querySelectorAll('a');
     links.forEach(link => {
         const text = link.textContent.toLowerCase();
+        
+        let elementToHide = link;
+        if (link.parentElement && link.parentElement.tagName.toLowerCase() === 'div') {
+            const nextEl = link.nextElementSibling;
+            if (nextEl && nextEl.classList.contains('star-btn')) {
+                elementToHide = link.parentElement;
+            }
+        }
+
         if (text.includes(filter)) {
-            link.style.display = '';
+            elementToHide.style.display = (elementToHide === link) ? '' : 'flex';
         } else {
-            link.style.display = 'none';
+            elementToHide.style.display = 'none';
         }
     });
 
     const detailsBlocks = nav.querySelectorAll('details');
     detailsBlocks.forEach(detail => {
-        const visibleLinks = Array.from(detail.querySelectorAll('a')).filter(a => a.style.display !== 'none');
+        const visibleLinks = Array.from(detail.querySelectorAll('a')).filter(a => {
+            let el = a;
+            if (a.parentElement && a.parentElement.tagName.toLowerCase() === 'div') {
+                const nextEl = a.nextElementSibling;
+                if (nextEl && nextEl.classList.contains('star-btn')) {
+                    el = a.parentElement;
+                }
+            }
+            return el.style.display !== 'none';
+        });
+        
         if (filter !== '') {
             detail.open = true;
             detail.style.display = visibleLinks.length > 0 ? 'block' : 'none';
@@ -75,7 +91,6 @@ function initFavorites() {
         favSection.id = 'favorites-section';
         favSection.open = true;
         
-        // On récupère la langue actuelle pour le titre des favoris
         const currentLang = document.documentElement.lang;
         const favTitle = currentLang === 'fr' ? '⭐ Favoris' : '⭐ Favorites';
         
@@ -132,7 +147,6 @@ function initFavorites() {
 
 function toggleFavorite(href, text) {
     let favs = JSON.parse(localStorage.getItem('speedyGeoToolsFavs') || '[]');
-    // On ignore le prefixe /fr/ pour que les favoris marchent dans les deux langues
     const cleanHref = href.replace('../', '');
     const index = favs.findIndex(f => f.href === cleanHref);
     
@@ -162,7 +176,6 @@ function renderFavorites() {
         favs.forEach(fav => {
             const a = document.createElement('a');
             
-            // Adaptation du lien selon le dossier où on se trouve
             const inSubfolder = window.location.pathname.includes('/fr/');
             a.href = inSubfolder ? '../' + fav.href : fav.href;
             

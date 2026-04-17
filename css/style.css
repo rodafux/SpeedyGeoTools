@@ -189,9 +189,11 @@ button:active { transform: scale(0.98); }
 .qrcode-title { text-align: center; width: 100%; }
 .qrcode-canvas canvas { max-width: 100%; height: auto !important; }
 .action-buttons { margin-top: 25px; display: flex; gap: 15px; }
+
 @media (max-width: 900px) {
     .qrcode-tool-layout { flex-direction: column; }
-    .settings-panel, .preview-panel { width: 100%; min-width: 0; }
+    .settings-panel, .preview-panel { width: 100%; min-width: 0; position: static !important; }
+    .main-layout { flex-direction: column !important; }
 }
 @media (max-width: 768px) {
     body { flex-direction: column; }
@@ -205,5 +207,5 @@ button:active { transform: scale(0.98); }
         box-shadow: var(--shadow-md); max-height: calc(100vh - 70px); overflow-y: auto; flex-direction: column; border-bottom: 1px solid var(--border-color);
     }
     .sidebar-content.active { display: flex; }
-    .main-layout { flex-direction: column-reverse; }
+    .main-layout { flex-direction: column; }
 }
