@@ -2,22 +2,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarContainer = document.getElementById('sidebar-placeholder');
     if (!sidebarContainer) return;
 
-    const isFrench = window.location.pathname.includes('/fr/');
-    const pathPrefix = isFrench ? '../' : '';
+    const pathParts = window.location.pathname.split('/');
+    let currentLang = 'en';
+    if (pathParts.includes('fr')) currentLang = 'fr';
+    if (pathParts.includes('de')) currentLang = 'de';
+
+    const pathPrefix = (currentLang === 'fr' || currentLang === 'de') ? '../' : '';
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    const menuData = {
-        home: isFrench ? 'Accueil' : 'Home',
-        searchPlaceholder: isFrench ? '🔍 Rechercher un outil...' : '🔍 Search a tool...',
-        discordJoin: isFrench ? 'Rejoindre le Discord' : 'Join the Discord',
-        favorites: isFrench ? 'Favoris' : 'Favorites',
-        cacheCreation: isFrench ? 'Tous les outils' : 'All tools',
-        tools: [
-            { id: 'labels.html', name: isFrench ? "Créateur d'Étiquettes" : 'Label Creator' },
-            { id: 'logbook.html', name: isFrench ? 'Créateur de Logbook' : 'Logbook Creator' },
-            { id: 'qrcode.html', name: isFrench ? 'Créateur de QR Code' : 'QR Code Creator' }
-        ]
+    const translations = {
+        en: {
+            home: 'Home',
+            searchPlaceholder: '🔍 Search a tool...',
+            discordJoin: 'Join the Discord',
+            favorites: 'Favorites',
+            cacheCreation: 'All tools',
+            tools: [
+                { id: 'labels.html', name: 'Label Creator' },
+                { id: 'logbook.html', name: 'Logbook Creator' },
+                { id: 'qrcode.html', name: 'QR Code Creator' }
+            ]
+        },
+        fr: {
+            home: 'Accueil',
+            searchPlaceholder: '🔍 Rechercher un outil...',
+            discordJoin: 'Rejoindre le Discord',
+            favorites: 'Favoris',
+            cacheCreation: 'Tous les outils',
+            tools: [
+                { id: 'labels.html', name: "Créateur d'Étiquettes" },
+                { id: 'logbook.html', name: 'Créateur de Logbook' },
+                { id: 'qrcode.html', name: 'Créateur de QR Code' }
+            ]
+        },
+        de: {
+            home: 'Startseite',
+            searchPlaceholder: '🔍 Werkzeug suchen...',
+            discordJoin: 'Dem Discord beitreten',
+            favorites: 'Favoriten',
+            cacheCreation: 'Alle Werkzeuge',
+            tools: [
+                { id: 'labels.html', name: 'Etiketten-Ersteller' },
+                { id: 'logbook.html', name: 'Logbuch-Ersteller' },
+                { id: 'qrcode.html', name: 'QR-Code-Ersteller' }
+            ]
+        }
     };
+
+    const menuData = translations[currentLang];
 
     function renderSidebar() {
         let favorites = JSON.parse(localStorage.getItem('speedyGeoToolsFavorites') || '[]');

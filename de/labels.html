@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="SpeedyGeoTools - Etiketten-Ersteller">
+    <meta property="og:description" content="Erstelle und drucke deine personalisierten Geocaching-Etiketten mit QR-Codes und maßgeschneiderten Optionen.">
+    <meta property="og:image" content="https://speedygeotools.com/logo.png">
+    <meta property="og:url" content="https://speedygeotools.com/de/labels.html">
+    <meta property="og:type" content="website">
+    <title>SpeedyGeoTools - Etiketten-Ersteller</title>
+    <meta name="description" content="Erstelle und drucke deine personalisierten Geocaching-Etiketten mit QR-Codes und maßgeschneiderten Optionen.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="alternate" hreflang="en" href="https://speedygeotools.com/labels.html" />
+    <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/labels.html" />
+    <link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/labels.html" />
+    <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/labels.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/print.css">
+    <link rel="canonical" href="https://speedygeotools.com/de/labels.html" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <div id="sidebar-placeholder"></div>
+    <main class="app-content">
+        <div class="container no-print">
+            <h1>Etiketten-Ersteller</h1>
+            <p class="subtitle">Konfiguriere deine Einstellungen und klicke auf Drucken.</p>
+            <div class="main-layout" style="display:block;">
+                <div class="controls-panel">
+                    <div style="margin-bottom: 25px;">
+                        <input type="file" id="importLabels" accept=".json" onchange="importConfig(event)" style="display: none;">
+                        <button onclick="document.getElementById('importLabels').click()" class="btn-secondary">📁 Konfiguration importieren</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="labelSize">Etikettenformat:</label>
+                        <select id="labelSize" onchange="onSizeChange()">
+                            <option value="micro">Micro (50x25mm)</option>
+                            <option value="small" selected>Klein (80x40mm)</option>
+                            <option value="regular">Standard (120x60mm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pdfLanguage">Textsprache:</label>
+                        <select id="pdfLanguage" onchange="onSizeChange()">
+                            <option value="de" selected>Deutsch</option>
+                            <option value="fr">Français (Französisch)</option>
+                            <option value="en">English (Englisch)</option>
+                            <option value="es">Español (Spanisch)</option>
+                            <option value="it">Italiano (Italienisch)</option>
+                            <option value="pt">Português (Portugiesisch)</option>
+                            <option value="nl">Nederlands (Niederländisch)</option>
+                            <option value="cs">Čeština (Tschechisch)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="labelOwner">Besitzer (Benutzername):</label>
+                        <input type="text" id="labelOwner" onkeyup="updateLabelPreview()">
+                    </div>
+                    <div class="form-group">
+                        <label for="labelMail">Kontakt (E-Mail / Tel):</label>
+                        <input type="text" id="labelMail" onkeyup="updateLabelPreview()">
+                    </div>
+                    <div id="cachesListContainer"></div>
+                    <button onclick="addCacheCard()" style="margin-bottom: 20px;">+ Cache hinzufügen</button>
+                    <div id="labelPreviewContainer" style="margin-top: 20px; background: #e2e8f0; padding: 20px; border-radius: 8px;"></div>
+                    <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                        <button onclick="exportConfig()" class="btn-secondary" style="margin-bottom: 15px;">💾 Konfiguration exportieren</button>
+                        <button onclick="generateLabelsAndPrint()">🖨️ PDF generieren / Drucken</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="site-footer no-print">
+            <p>Ist SpeedyGeoTools nützlich für dich? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Spende über PayPal</a> ❤️</p>
+            <p class="disclaimer">
+                SpeedyGeoTools ist ein Drittanbieter-Tool, das von einem Spieler erstellt wurde. Das Geocaching-Logo ist eine eingetragene Marke von Groundspeak, Inc. und wird mit Genehmigung verwendet.<br>
+                <a href="legal.html">Impressum & Datenschutz</a>
+            </p>
+        </footer>
+    </main>
+    <div id="render-area"></div>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/formats/micro.js"></script>
+    <script src="../js/formats/small.js"></script>
+    <script src="../js/formats/regular.js"></script>
+    <script src="../js/labels.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/sidebar.js"></script>
+</body>
+</html>

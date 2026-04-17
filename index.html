@@ -14,6 +14,7 @@
     <link rel="canonical" href="https://speedygeotools.com/" />
     <link rel="alternate" hreflang="en" href="https://speedygeotools.com/" />
     <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/" />
+    <link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/" />
     <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/" />
     <style>
         .section-header { text-align: center; margin-top: 30px; margin-bottom: 30px; }
@@ -64,7 +65,7 @@
     </style>
     <script>
         (function() {
-                    var supportedLangs = ['fr'];
+                    var supportedLangs = ['fr', 'de'];
                     var userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
                     if (!sessionStorage.getItem('lang_redirect') && supportedLangs.indexOf(userLang) !== -1) {
                         sessionStorage.setItem('lang_redirect', 'true');
@@ -189,8 +190,12 @@
             </div>
         </div>
         
-        <footer class="site-footer">
-            <p>SpeedyGeoTools | <a href="legal.html">Legal Notice</a></p>
+        <footer class="site-footer no-print">
+            <p>Is SpeedyGeoTools useful to you? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Donate via PayPal</a> ❤️</p>
+            <p class="disclaimer">
+                SpeedyGeoTools is a third-party tool created by a player. The Geocaching Logo is a registered trademark of Groundspeak, Inc. used with permission.<br>
+                <a href="legal.html">Legal Notice & Privacy</a>
+            </p>
         </footer>
     </main>
 
