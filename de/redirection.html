@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Weiterleitung - SpeedyGeoTools">
+    <meta property="og:description" content="Warnung vor Weiterleitung zu einem externen Link.">
+    <meta property="og:image" content="https://speedygeotools.com/logo.png">
+    <meta property="og:url" content="https://speedygeotools.com/de/redirection.html">
+    <meta property="og:type" content="website">
+    <title>Weiterleitung - SpeedyGeoTools</title>
+    <meta name="description" content="Warnung vor Weiterleitung zu einem externen Link.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="alternate" hreflang="en" href="https://speedygeotools.com/redirection.html" />
+    <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/redirection.html" />
+    <link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/redirection.html" />
+    <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/redirection.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="canonical" href="https://speedygeotools.com/de/redirection.html" />
+    <style>
+        body { display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: var(--bg-body); }
+        .redirect-container { max-width: 600px; width: 90%; background: var(--bg-surface); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md); border-top: 5px solid #f59e0b; text-align: center; }
+        .warning-icon { font-size: 48px; margin-bottom: 20px; }
+        .redirect-container h1 { border-bottom: none; font-size: 1.8rem; margin-bottom: 20px; }
+        .target-url { background: #f3f4f6; padding: 15px; border-radius: 8px; word-break: break-all; margin: 20px 0; color: var(--primary-color); font-weight: 600; }
+        .btn-gray { background-color: #6b7280 !important; color: white; }
+        .btn-gray:hover { background-color: #4b5563 !important; }
+        .action-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 35px; }
+        @media (min-width: 600px) { .action-buttons { flex-direction: row; } }
+    </style>
+</head>
+<body>
+    <main class="redirect-container">
+        <div class="warning-icon">⚠️</div>
+        <h1>Achtung, du verlässt SpeedyGeoTools</h1>
+        <p>Du bist dabei, über einen von einem Benutzer generierten QR-Code auf eine externe Seite weitergeleitet zu werden:</p>
+        <div class="target-url" id="urlDisplay">Link wird geladen...</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+            <strong>Sei vorsichtig:</strong> SpeedyGeoTools kontrolliert diese Seite nicht. Achte auf betrügerische Links und lade keine Dateien herunter, wenn du dir ihrer Herkunft nicht absolut sicher bist.
+        </p>
+        <div class="action-buttons">
+            <button class="btn-gray" onclick="window.location.href='index.html'">Zurück zu SpeedyGeoTools</button>
+            <button id="continueBtn" style="background-color: var(--primary-color);">Ich verstehe und möchte fortfahren</button>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            let targetUrl = urlParams.get('url');
+            const urlDisplay = document.getElementById('urlDisplay');
+            const continueBtn = document.getElementById('continueBtn');
+            if (targetUrl) {
+                if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) { targetUrl = 'https://' + targetUrl; }
+                urlDisplay.textContent = targetUrl;
+                continueBtn.onclick = () => { window.location.href = targetUrl; };
+            } else {
+                urlDisplay.textContent = "Kein Link angegeben.";
+                urlDisplay.style.color = "#d32f2f";
+                continueBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

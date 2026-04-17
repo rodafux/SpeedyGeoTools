@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="SpeedyGeoTools - Logbuch-Ersteller">
+    <meta property="og:description" content="Generiere und drucke sofort Logblätter, die an die Größe deiner Geocaches (Micro, Small, Regular) angepasst sind.">
+    <meta property="og:image" content="https://speedygeotools.com/logo.png">
+    <meta property="og:url" content="https://speedygeotools.com/de/logbook.html">
+    <meta property="og:type" content="website">
+    <title>SpeedyGeoTools - Logbuch-Ersteller</title>
+    <meta name="description" content="Generiere und drucke sofort Logblätter, die an die Größe deiner Geocaches (Micro, Small, Regular) angepasst sind.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="alternate" hreflang="en" href="https://speedygeotools.com/logbook.html" />
+    <link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/logbook.html" />
+    <link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/logbook.html" />
+    <link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/logbook.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/print.css">
+    <link rel="canonical" href="https://speedygeotools.com/de/logbook.html" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <div id="sidebar-placeholder"></div>
+    <main class="app-content">
+        <div class="container no-print">
+            <h1>Logbuch-Ersteller (PDF)</h1>
+            <p class="subtitle">Konfiguriere deine Einstellungen und klicke auf Drucken (wähle "Als PDF speichern" beim Ziel).</p>
+            <div class="main-layout" style="display:block;">
+                <div class="controls-panel">
+                    <div style="margin-bottom: 25px;">
+                        <input type="file" id="importLogbook" accept=".json" onchange="importLogbookConfig(event)" style="display: none;">
+                        <button onclick="document.getElementById('importLogbook').click()" class="btn-secondary">📁 Konfiguration importieren</button>
+                    </div>
+                    
+                    <div class="form-group checkbox-group emergency-toggle">
+                        <input type="checkbox" id="isEmergency">
+                        <label for="isEmergency" style="color: #d32f2f; font-weight: bold;">Dies ist ein Notfall-Logbuch</label>
+                    </div>
+                    <div class="form-group" id="emergencyPseudoGroup" style="display: none;">
+                        <label for="emergencyPseudo">Dein Benutzername (Gelegt von):</label>
+                        <input type="text" id="emergencyPseudo" placeholder="Bsp: GeoFinder">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stripWidth">Streifenbreite:</label>
+                        <select id="stripWidth">
+                            <option value="25">Micro (25 mm) - Keine Stempel oder Text</option>
+                            <option value="35" selected>Klein (35 mm) - Standard</option>
+                            <option value="45">Normal (45 mm) - Groß</option>
+                        </select>
+                    </div>
+
+                    <div id="standardOptions">
+                        <div class="form-group">
+                            <label for="cacheName">Cache-Name (optional):</label>
+                            <input type="text" id="cacheName" placeholder="Bsp: Die alte Mühle">
+                        </div>
+                        <div class="form-group">
+                            <label for="cacheCode">Cache-Code (optional):</label>
+                            <input type="text" id="cacheCode" placeholder="Bsp: GC12345">
+                        </div>
+                        <div class="form-group">
+                            <label for="logoInput">Eigenes Logo (optional):</label>
+                            <input type="file" id="logoInput" accept="image/png, image/jpeg">
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="hasQrCode">
+                            <label for="hasQrCode">QR-Code hinzufügen (Owner-Link)</label>
+                        </div>
+                        <div class="form-group" id="qrUrlGroup" style="display: none;">
+                            <label for="qrUrl">QR-Code-Link:</label>
+                            <input type="text" id="qrUrl" placeholder="https://...">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="hasWarning">
+                        <label for="hasWarning">Geocaching-Warnung auf dem ersten Streifen drucken</label>
+                    </div>
+                    
+                    <div id="podiumOptions">
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="hasFtf">
+                            <label for="hasFtf">FTF-Zone drucken</label>
+                        </div>
+                        <div class="form-group checkbox-group sub-checkbox" id="ftfTamponGroup" style="display: none;">
+                            <input type="checkbox" id="hasFtfTampon" checked>
+                            <label for="hasFtfTampon">FTF-Zone vergrößern (Platz für Stempel)</label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="hasStfTtf">
+                            <label for="hasStfTtf">STF- und TTF-Zonen drucken</label>
+                        </div>
+                        <div class="form-group checkbox-group sub-checkbox" id="stfTtfTamponGroup" style="display: none;">
+                            <input type="checkbox" id="hasStfTtfTampon" checked>
+                            <label for="hasStfTtfTampon">STF/TTF-Zonen vergrößern (Platz für Stempel)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stripCount">Gesamtanzahl der Streifen:</label>
+                        <input type="number" id="stripCount" value="5" min="1" max="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pdfLanguage">Sprache des gedruckten Logbuchs:</label>
+                        <select id="pdfLanguage">
+                            <option value="de" selected>Deutsch</option>
+                            <option value="fr">Français (Französisch)</option>
+                            <option value="en">English (Englisch)</option>
+                            <option value="es">Español (Spanisch)</option>
+                            <option value="it">Italiano (Italienisch)</option>
+                            <option value="pt">Português (Portugiesisch)</option>
+                            <option value="nl">Nederlands (Niederländisch)</option>
+                            <option value="cs">Čeština (Tschechisch)</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                        <button onclick="exportLogbookConfig()" class="btn-secondary" style="margin-bottom: 15px;">💾 Konfiguration exportieren</button>
+                        <button onclick="generateAndPrint()">🖨️ PDF generieren / Drucken</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="site-footer no-print">
+            <p>Ist SpeedyGeoTools nützlich für dich? <a href="https://paypal.me/JulienPorcher" target="_blank" rel="noopener noreferrer">Spende über PayPal</a> ❤️</p>
+            <p class="disclaimer">
+                SpeedyGeoTools ist ein Drittanbieter-Tool, das von einem Spieler erstellt wurde. Das Geocaching-Logo ist eine eingetragene Marke von Groundspeak, Inc. und wird mit Genehmigung verwendet.<br>
+                <a href="legal.html">Impressum & Datenschutz</a>
+            </p>
+        </footer>
+    </main>
+    <div id="render-area"></div>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/logbook.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/sidebar.js"></script>
+</body>
+</html>
