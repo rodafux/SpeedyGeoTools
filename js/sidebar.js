@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tools: [
                 { id: 'labels.html', name: 'Label Creator' },
                 { id: 'logbook.html', name: 'Logbook Creator' },
-                { id: 'qrcode.html', name: 'QR Code Creator' }
+                { id: 'qrcode.html', name: 'QR Code Creator' },
+                { id: 'podium.html', name: 'Podium Creator' }
             ]
         },
         fr: {
@@ -32,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tools: [
                 { id: 'labels.html', name: "Créateur d'Étiquettes" },
                 { id: 'logbook.html', name: 'Créateur de Logbook' },
-                { id: 'qrcode.html', name: 'Créateur de QR Code' }
+                { id: 'qrcode.html', name: 'Créateur de QR Code' },
+                { id: 'podium.html', name: 'Créateur de Podium' }
             ]
         },
         de: {
@@ -44,12 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
             tools: [
                 { id: 'labels.html', name: 'Etiketten-Ersteller' },
                 { id: 'logbook.html', name: 'Logbuch-Ersteller' },
-                { id: 'qrcode.html', name: 'QR-Code-Ersteller' }
+                { id: 'qrcode.html', name: 'QR-Code-Ersteller' },
+                { id: 'podium.html', name: 'Podium-Ersteller' }
             ]
         }
     };
 
     const menuData = translations[currentLang];
+    
+    menuData.tools.sort((a, b) => a.name.localeCompare(b.name, currentLang));
 
     function renderSidebar() {
         let favorites = JSON.parse(localStorage.getItem('speedyGeoToolsFavorites') || '[]');

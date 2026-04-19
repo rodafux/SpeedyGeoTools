@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="podium_title">Podium Creator - SpeedyGeoTools</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .form-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .podium-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar-placeholder"></div>
+    <main class="app-content">
+        <div class="container">
+            <h1 data-i18n="podium_h1">Podium Creator</h1>
+            <p class="subtitle" data-i18n="podium_subtitle">Create a custom honor block for the first finders of your cache.</p>
+            
+            <div class="main-layout" style="display:block;">
+                <div class="controls-panel">
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="cacheName" data-i18n="podium_cache_name">Cache name:</label>
+                            <input type="text" id="cacheName" placeholder="Ex: The Fox's Treasure">
+                        </div>
+                        <div class="form-group">
+                            <label for="cacheCode" data-i18n="podium_cache_code">GC Code (e.g. GCB820W):</label>
+                            <input type="text" id="cacheCode" placeholder="GCXXXXX">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <label style="font-weight: bold; display: block; margin-bottom: 15px;" data-i18n="podium_config">Finders Configuration:</label>
+                        <div class="form-group">
+                            <label for="ftfName">🥇 FTF :</label>
+                            <input type="text" id="ftfName" placeholder="Username">
+                        </div>
+                        <div class="podium-option">
+                            <input type="checkbox" id="showSTF">
+                            <label for="showSTF" data-i18n="podium_show_stf">Show STF</label>
+                        </div>
+                        <div class="form-group" id="stfGroup" style="display: none;">
+                            <label for="stfName">🥈 STF :</label>
+                            <input type="text" id="stfName" placeholder="Username">
+                        </div>
+                        <div class="podium-option">
+                            <input type="checkbox" id="showTTF">
+                            <label for="showTTF" data-i18n="podium_show_ttf">Show TTF</label>
+                        </div>
+                        <div class="form-group" id="ttfGroup" style="display: none;">
+                            <label for="ttfName">🥉 TTF :</label>
+                            <input type="text" id="ttfName" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label for="podiumSize" data-i18n="podium_size">Block size:</label>
+                            <select id="podiumSize">
+                                <option value="small" data-i18n="podium_size_small">Small</option>
+                                <option value="medium" selected data-i18n="podium_size_medium">Medium</option>
+                                <option value="large" data-i18n="podium_size_large">Large</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="podiumColor" data-i18n="podium_color">Color:</label>
+                            <input type="color" id="podiumColor" value="#02874D">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px; border-top: 2px solid var(--border-color); padding-top: 25px;">
+                        <h2 data-i18n="podium_preview_title" style="font-size: 1.2rem; color: var(--primary-color); margin-bottom: 15px;">Module preview:</h2>
+                        
+                        <div id="podiumPreview" style="background: #fff; border: 1px dashed #ccc; padding: 20px; border-radius: 8px; margin-bottom: 25px; overflow-x: auto; display: flex; justify-content: center;"></div>
+
+                        <label for="podiumCode" style="margin-bottom: 10px; display: block; font-weight: bold; color: var(--text-main);" data-i18n="podium_code_label">HTML code to copy:</label>
+                        <textarea id="podiumCode" readonly style="width: 100%; min-height: 120px; font-family: monospace; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: #f9fafb; resize: vertical; outline: none;"></textarea>
+                        
+                        <button id="copyBtn" style="margin-top: 15px; width: 100%;" data-i18n="podium_copy">📋 Copy code for my cache</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <p>SpeedyGeoTools | Podium Creator</p>
+        </footer>
+    </main>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/podium.js"></script>
+</body>
+</html>

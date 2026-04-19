@@ -6,7 +6,7 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,7 +15,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/labels.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/labels.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/labels.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -24,7 +24,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/logbook.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/logbook.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/logbook.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -33,7 +33,16 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/qrcode.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/qrcode.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/qrcode.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://speedygeotools.com/podium.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/podium.html"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/podium.html"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/podium.html"/>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -42,7 +51,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/legal.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/legal.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/legal.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -52,7 +61,7 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -61,7 +70,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/labels.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/labels.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/labels.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -70,7 +79,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/logbook.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/logbook.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/logbook.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -79,7 +88,16 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/qrcode.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/qrcode.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/qrcode.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://speedygeotools.com/fr/podium.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/podium.html"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/podium.html"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/podium.html"/>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -88,7 +106,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/legal.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/legal.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/legal.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -98,7 +116,7 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://speedygeotools.com/"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -107,7 +125,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/labels.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/labels.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/labels.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -116,7 +134,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/logbook.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/logbook.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/logbook.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -125,7 +143,16 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/qrcode.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/qrcode.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/qrcode.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://speedygeotools.com/de/podium.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/podium.html"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/podium.html"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/podium.html"/>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -134,7 +161,7 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://speedygeotools.com/legal.html"/>
         <xhtml:link rel="alternate" hreflang="fr" href="https://speedygeotools.com/fr/legal.html"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://speedygeotools.com/de/legal.html"/>
-        <lastmod>2026-04-17</lastmod>
+        <lastmod>2026-04-19</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
